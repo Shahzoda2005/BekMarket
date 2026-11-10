@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEK MARKET — Milliy Internet Do'kon va Oziq-ovqat</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        bek: {
+                            DEFAULT: '#7000FF',
+                            dark: '#5600c4',
+                            light: '#f3ebff',
+                            food: '#10b981',
+                            foodDark: '#059669'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+        body { background-color: #f4f5f7; color: #1f2026; overflow-x: hidden; }
+
+        /* Maxsus skrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c5a3ff; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7000FF; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* ================= OLMA SHAKLIDAGI NEON SHAFFOF 3D OYNA ================= */
+        .apple-scene {
+            perspective: 1400px;
+            width: 390px;
+            max-width: 94vw;
+            height: 495px;
+            position: relative;
+            margin-top: 36px;
+        }
+
+        .apple-card-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .apple-card-3d.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .apple-stem {
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.28);
+            border: 2px solid #ffffff;
+            border-radius: 10px 10px 2px 2px;
+            box-shadow: 0 0 15px #ffffff, 0 0 25px rgba(168, 85, 247, 0.9);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .apple-leaf {
+            position: absolute;
+            top: -32px;
+            left: 52%;
+            width: 44px;
+            height: 24px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(168, 85, 247, 0.4));
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffffff;
+            border-radius: 0 100% 0 100%;
+            transform: rotate(-18deg);
+            box-shadow: 0 0 18px #ffffff, inset 0 0 10px #ffffff;
+            z-index: 21;
+            pointer-events: none;
+            animation: leafFloat 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes leafFloat {
+            0% { transform: rotate(-18deg) scale(1); }
+            100% { transform: rotate(-10deg) scale(1.07); }
+        }
+
+        .apple-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 46% 46% 43% 43% / 38% 38% 54% 54%;
+            background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.30), rgba(112, 0, 255, 0.25) 60%, rgba(15, 23, 42, 0.65) 100%);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 2.5px solid #ffffff;
+            box-shadow:
+                0 0 15px #ffffff,
+                0 0 35px rgba(255, 255, 255, 0.7),
+                0 0 60px rgba(112, 0, 255, 0.55),
+                inset 0 0 25px rgba(255, 255, 255, 0.6);
+            padding: 36px 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .apple-face::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 45% 45% 42% 42% / 37% 37% 53% 53%;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            pointer-events: none;
+            box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.35);
+        }
+
+        .apple-face-back {
+            transform: rotateY(180deg);
+            background: radial-gradient(circle at 70% 25%, rgba(255, 255, 255, 0.30), rgba(225, 29, 72, 0.28) 60%, rgba(15, 23, 42, 0.72) 100%);
+            box-shadow:
+                0 0 18px #ffffff,
+                0 0 40px rgba(255, 255, 255, 0.8),
+                0 0 65px rgba(255, 0, 85, 0.6),
+                inset 0 0 25px rgba(255, 255, 255, 0.65);
+        }
+
+        .glass-input {
+            background: rgba(255, 255, 255, 0.16);
+            border: 1.5px solid rgba(255, 255, 255, 0.75);
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: all 0.25s ease;
+        }
+        .glass-input::placeholder { color: rgba(255, 255, 255, 0.75); }
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.26);
+            border-color: #ffffff;
+            box-shadow: 0 0 16px #ffffff;
+            outline: none;
+        }
+
+        /* Mahsulot kartochkasi animatsiyasi */
+        .product-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px -10px rgba(112, 0, 255, 0.16);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ================= YUQORI XABARNOMA (TOAST) ================= -->
+    <div id="toastContainer" class="fixed top-5 right-5 z-[3000] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ========================================================================= -->
+    <!-- 1-QISM: MIJOZ (FOYDALANUVCHI) DO'KON SAHIFASI (ADMIN HAVOLALARSIZ)        -->
+    <!-- ========================================================================= -->
+    <div id="storefrontView" class="min-h-screen flex flex-col">
+
+        <!-- HEADER (YUQORI QISM) -->
+        <header class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+            <!-- Yuqori ma'lumot qatori -->
+            <div class="bg-gray-100 text-xs text-gray-600 py-1.5 hidden md:block">
+                <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <span><i class="fa-solid fa-location-dot text-bek mr-1"></i> O'zbekiston bo'ylab tez va ishonchli yetkazib berish</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-bolt mr-1"></i>Oziq-ovqat mahsulotlari 60 daqiqada eshigingizda!</span>
+                    </div>
+                    <div class="flex items-center gap-4 font-medium">
+                        <a href="https://t.me/shahzodaoo5" target="_blank" class="hover:text-bek"><i class="fa-brands fa-telegram mr-1"></i>@shahzodaoo5</a>
+                        <a href="tel:+998940728286" class="hover:text-bek"><i class="fa-solid fa-phone mr-1"></i>+998 94 072 82 86</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asosiy Header -->
+            <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                <!-- Mobil Gamburger tugmasi -->
+                <button onclick="toggleCatalogMenu()" class="lg:hidden w-10 h-10 rounded-xl bg-gray-100 text-gray-700 flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+
+                <!-- Logotip: BEK MARKET -->
+                <a href="#" onclick="resetAllFilters(); return false;" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-bek to-purple-500 flex items-center justify-center text-white shadow-md shadow-bek/30 group-hover:scale-105 transition">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-r from-bek to-pink-600 bg-clip-text text-transparent">BEK MARKET</span>
+                        <span class="block text-[10px] text-gray-400 -mt-1 font-semibold tracking-widest uppercase">Milliy Marketplace</span>
+                    </div>
+                </a>
+
+                <!-- Katalog tugmasi -->
+                <button onclick="toggleCatalogMenu()" class="hidden lg:flex bg-bek/10 hover:bg-bek/20 text-bek font-bold px-4 py-2.5 rounded-xl items-center gap-2 transition text-sm">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Katalog</span>
+                </button>
+
+                <!-- Qidiruv Paneli -->
+                <div class="flex-1 min-w-[240px] order-last lg:order-none w-full lg:w-auto flex items-center border-2 border-gray-200 focus-within:border-bek rounded-xl overflow-hidden bg-gray-50 transition">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Mahsulot va oziq-ovqatlarni qidirish (masalan: tandir non, sut, olma, banan)..."
+                        class="w-full px-4 py-2.5 bg-transparent text-sm outline-none text-gray-800"
+                        oninput="handleSearchInput()"
+                    >
+                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden text-gray-400 hover:text-gray-600 px-2">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                    <button onclick="handleSearchInput()" class="bg-bek hover:bg-bek-dark text-white px-5 py-2.5 flex items-center justify-center transition">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <!-- O'ng tomon: Kirish, Saralangan, Savat (MIJOZ QISMIDA ADMIN HAVOLASI YO'Q) -->
+                <div class="flex items-center gap-1.5 sm:gap-3">
+                    <button onclick="openAuthModal()" class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition text-sm font-semibold text-gray-700">
+                        <i class="fa-regular fa-user text-lg text-bek"></i>
+                        <span id="userStatusText" class="hidden sm:inline">Kirish</span>
+                    </button>
+
+                    <button onclick="openFavoritesModal()" class="relative flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition text-sm font-semibold text-gray-700">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                        <span class="hidden sm:inline">Saralangan</span>
+                        <span id="favBadge" class="absolute -top-1 right-1 bg-pink-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <button onclick="openCartModal()" class="relative flex items-center gap-2 px-3.5 py-2 rounded-xl bg-bek/10 hover:bg-bek/20 text-bek transition text-sm font-bold">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span class="hidden sm:inline">Savat</span>
+                        <span id="cartBadge" class="bg-bek text-white text-xs font-extrabold px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ochiladigan Katalog Menyusi -->
+            <div id="catalogDropdown" class="hidden bg-white border-t border-gray-100 shadow-xl py-4 px-4">
+                <div id="catalogDrawerGrid" class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+                    <!-- JS orqali kategoriyalar chiqadi -->
+                </div>
+            </div>
+
+            <!-- Asosiy Kategoriyalar Qatori -->
+            <div class="max-w-7xl mx-auto px-4 border-t border-gray-100">
+                <ul id="mainCategoryTabs" class="flex items-center gap-2 sm:gap-4 py-2.5 overflow-x-auto no-scrollbar text-sm font-semibold text-gray-600 whitespace-nowrap">
+                    <!-- JS orqali chiziladi -->
+                </ul>
+            </div>
+        </header>
+
+        <!-- ASOSIY SAHIFA KONTENTI -->
+        <main class="max-w-7xl mx-auto px-4 py-5 flex-1 w-full">
+
+            <!-- REKLAMA BANNER SLAYDERI -->
+            <div id="heroBannerWrapper" class="relative rounded-2xl overflow-hidden shadow-lg mb-6 h-52 sm:h-72 bg-gray-900">
+                <img id="bannerImg" src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80" alt="Banner" class="w-full h-full object-cover opacity-70 transition-all duration-700">
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/50 to-transparent flex flex-col justify-center px-6 sm:px-12 text-white">
+                    <span id="bannerTag" class="bg-emerald-500 text-white text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full w-fit mb-2.5 shadow">YANGI BO'LIM: OZIQ-OVQAT ⚡</span>
+                    <h1 id="bannerTitle" class="text-xl sm:text-4xl font-black max-w-xl leading-tight mb-2">100 xil yangi oziq-ovqat mahsulotlari uyingizgacha!</h1>
+                    <p id="bannerSub" class="text-xs sm:text-sm text-gray-200 max-w-md mb-4">Issiq tandir non, yangi sut, sarxil meva-sabzavot va go'sht mahsulotlarini bozor narxida buyurtma qiling.</p>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button onclick="selectMainCategory('Oziq-ovqat')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg transition flex items-center gap-2">
+                            <i class="fa-solid fa-basket-shopping"></i> Oziq-ovqat bo'limiga o'tish
+                        </button>
+                        <button onclick="selectMainCategory('Barchasi'); document.getElementById('discountSection').scrollIntoView({behavior:'smooth'})" class="bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition">
+                            Chegirmalarni ko'rish
+                        </button>
+                    </div>
+                </div>
+                <button onclick="changeSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/30 hover:bg-white text-gray-900 flex items-center justify-center backdrop-blur transition">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <button onclick="changeSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/30 hover:bg-white text-gray-900 flex items-center justify-center backdrop-blur transition">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- ================= MAXSUS OZIQ-OVQAT BO'LIMI VA ICHKI TOIFALARI ================= -->
+            <section id="foodSpecialHeader" class="hidden mb-6 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-5 text-white shadow-lg">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/20 pb-4 mb-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-2xl">
+                            🥗
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-xl sm:text-2xl font-black">BEK MARKET — Oziq-ovqat Gipermarketi</h2>
+                                <span class="bg-amber-300 text-slate-900 text-[11px] font-black px-2.5 py-0.5 rounded-full">100 TA MAHSULOT</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-emerald-100 mt-0.5">Har bir mahsulot yangi, yaroqlilik muddati kafolatlangan va 60 daqiqada tez yetkaziladi!</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-bold bg-white/15 px-3.5 py-2 rounded-xl w-fit">
+                        <i class="fa-solid fa-truck-bolt text-amber-300 text-base"></i>
+                        <span>Tez yetkazish xizmati faol</span>
+                    </div>
+                </div>
+
+                <!-- 10 ta Ichki Oziq-ovqat toifalari -->
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-emerald-100 mb-2">Ichki bo'limni tanlang (10 ta toifa):</div>
+                    <div id="foodSubcategoryPills" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                        <!-- JS orqali 10 ta ichki toifa tugmalari chiqadi -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- FILTRLAR VA SARALASH PANELI -->
+            <section class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm mb-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 items-end">
+                    <!-- Min narx -->
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Narx (dan, so'm)</label>
+                        <input type="number" id="filterMinPrice" placeholder="Masalan: 5000" oninput="renderStorefront()" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-bek">
+                    </div>
+                    <!-- Max narx -->
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Narx (gacha, so'm)</label>
+                        <input type="number" id="filterMaxPrice" placeholder="Masalan: 500000" oninput="renderStorefront()" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-bek">
+                    </div>
+                    <!-- Reyting filtri -->
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Minimal Reyting</label>
+                        <select id="filterRating" onchange="renderStorefront()" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-bek bg-white font-medium">
+                            <option value="0">⭐ Barcha reytinglar</option>
+                            <option value="4.5">⭐ 4.5 va undan yuqori</option>
+                            <option value="4.8">⭐ 4.8 va undan yuqori</option>
+                            <option value="4.9">⭐ 4.9 (Eng a'lo)</option>
+                        </select>
+                    </div>
+                    <!-- Saralash -->
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-500 uppercase block mb-1">Saralash turi</label>
+                        <select id="sortSelect" onchange="renderStorefront()" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm outline-none focus:border-bek bg-white font-medium">
+                            <option value="default">🔥 Ommabop</option>
+                            <option value="cheap">📉 Avval arzonlari</option>
+                            <option value="expensive">📈 Avval qimmatlari</option>
+                            <option value="rating">⭐ Yuqori reyting</option>
+                            <option value="new">🆕 Yangi qo'shilganlar</option>
+                        </select>
+                    </div>
+                    <!-- Faqat chegirmalar -->
+                    <div class="flex items-center h-10">
+                        <label class="inline-flex items-center gap-2 cursor-pointer select-none text-xs sm:text-sm font-semibold text-gray-700">
+                            <input type="checkbox" id="filterOnlyDiscount" onchange="renderStorefront()" class="w-4 h-4 accent-bek rounded">
+                            <span>Faqat chegirmadagilar</span>
+                        </label>
+                    </div>
+                    <!-- Filtrlarni tozalash -->
+                    <div>
+                        <button onclick="resetAllFilters()" class="w-full py-2 px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs sm:text-sm transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Tozalash
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CHEGIRMALAR BO'LIMI (Faqat Barchasi tanlanganda ko'rinadi) -->
+            <section id="discountSection" class="mb-10">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold"><i class="fa-solid fa-fire-flame-curved"></i></span>
+                        <h2 class="text-lg sm:text-2xl font-black text-gray-900">Super Chegirmalar</h2>
+                    </div>
+                    <span class="text-xs text-rose-600 font-bold bg-rose-50 px-3 py-1 rounded-full">Chegirmani qo'ldan boy bermang!</span>
+                </div>
+                <div id="discountGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <!-- JS orqali to'ldiriladi -->
+                </div>
+            </section>
+
+            <!-- ASOSIY MAHSULOTLAR TO'RI (GRID) -->
+            <section>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-2.5">
+                        <span id="sectionIconBox" class="w-8 h-8 rounded-xl bg-purple-100 text-bek flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-store"></i>
+                        </span>
+                        <div>
+                            <h2 id="mainSectionTitle" class="text-lg sm:text-2xl font-black text-gray-900">Barcha mahsulotlar</h2>
+                            <p id="mainSectionSubtitle" class="text-xs text-gray-500">Jami mahsulotlar ro'yxati</p>
+                        </div>
+                    </div>
+                    <span id="foundProductsCounter" class="text-xs sm:text-sm font-bold text-bek bg-bek/10 px-3.5 py-1.5 rounded-full">0 ta mahsulot</span>
+                </div>
+
+                <div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <!-- JS orqali mahsulot kartochkalari chiqadi -->
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-white pt-12 pb-8 mt-14">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+                    <div>
+                        <div class="flex items-center gap-2.5 mb-4">
+                            <div class="w-9 h-9 rounded-xl bg-bek flex items-center justify-center text-white">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <span class="text-xl font-black tracking-tight">BEK MARKET</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            O'zbekistondagi zamonaviy ko'p sotuvchili internet-do'kon va 100 xil kundalik oziq-ovqat gipermarketi.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-base mb-4 text-white">Bo'limlar</h3>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><button onclick="selectMainCategory('Oziq-ovqat')" class="hover:text-emerald-400 text-emerald-300 font-semibold transition">🥗 Oziq-ovqat (100 ta mahsulot)</button></li>
+                            <li><button onclick="selectMainCategory('Elektronika')" class="hover:text-white transition">💻 Elektronika</button></li>
+                            <li><button onclick="selectMainCategory('Kiyim')" class="hover:text-white transition">👗 Kiyim va poyabzal</button></li>
+                            <li><button onclick="selectMainCategory('Uy-ro\'zg\'or')" class="hover:text-white transition">🏠 Uy-ro'zg'or buyumlari</button></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-base mb-4 text-white">Xaridorlarga yordam</h3>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><button onclick="openCartModal()" class="hover:text-white transition">Savat va buyurtma berish</button></li>
+                            <li><button onclick="openFavoritesModal()" class="hover:text-white transition">Saralangan mahsulotlar</button></li>
+                            <li><button onclick="toggleChatWidget()" class="hover:text-white transition">Onlayn yordamchi chat-bot</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bog'lanish -->
+                    <div>
+                        <h3 class="font-bold text-base mb-4 text-white">Biz bilan bog'lanish</h3>
+                        <div class="space-y-2.5 text-sm">
+                            <a href="https://instagram.com/o_sh_a___" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800 hover:bg-pink-600 transition">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                                <div>
+                                    <div class="text-[11px] text-slate-400">Instagram</div>
+                                    <div class="font-bold text-white">@o_sh_a___</div>
+                                </div>
+                            </a>
+                            <a href="https://t.me/shahzodaoo5" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800 hover:bg-sky-600 transition">
+                                <i class="fa-brands fa-telegram text-lg"></i>
+                                <div>
+                                    <div class="text-[11px] text-slate-400">Telegram</div>
+                                    <div class="font-bold text-white">@shahzodaoo5</div>
+                                </div>
+                            </a>
+                            <a href="https://wa.me/998940728286" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 transition">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <div>
+                                    <div class="text-[11px] text-slate-400">WhatsApp / Telefon</div>
+                                    <div class="font-bold text-white">+998 94 072 82 86</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                    <p ondblclick="openSeparateAdminView()">&copy; 2026 BEK MARKET. Barcha huquqlar himoyalangan.</p>
+                    <p>To'lov tizimlari: <span class="text-slate-300 font-semibold">Naqd • Click • Payme • Uzum Nasiya</span></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 2-QISM: ALOHIDA ADMIN PANEL SAHIFASI (MIJOZDAN BUTUNLAY AJRATILGAN)       -->
+    <!-- ========================================================================= -->
+    <div id="adminSeparateView" class="hidden min-h-screen flex-col bg-slate-100">
+        <!-- Admin Topbar -->
+        <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-600 flex items-center justify-center font-black text-lg shadow">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-base sm:text-lg font-black tracking-wide">BEK MARKET — ADMIN PANEL (`admin.html`)</h1>
+                        <p class="text-[11px] text-slate-400">Ombor, 100 ta Oziq-ovqat, Buyurtmalar va Kategoriyalar boshqaruvi</p>
+                    </div>
+                </div>
+
+                <!-- Admin Bo'limlar menyusi -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="switchAdminSection('dashboard')" id="admBtnDashboard" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-bek text-white transition">
+                        <i class="fa-solid fa-chart-pie mr-1"></i> Dashboard & Ombor
+                    </button>
+                    <button onclick="switchAdminSection('orders')" id="admBtnOrders" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                        <i class="fa-solid fa-truck-fast mr-1"></i> Buyurtmalar (<span id="admOrdersCount">0</span>)
+                    </button>
+                    <button onclick="switchAdminSection('categories')" id="admBtnCategories" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                        <i class="fa-solid fa-folder-tree mr-1"></i> Kategoriyalar
+                    </button>
+                    <button onclick="switchAdminSection('chat')" id="admBtnChat" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+                        <i class="fa-solid fa-comments mr-1"></i> Mijozlar Chati
+                    </button>
+                    <button onclick="exitAdminToStorefront()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition ml-2">
+                        <i class="fa-solid fa-store mr-1"></i> Mijoz do'koniga o'tish
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Admin Main Content -->
+        <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-6">
+
+            <!-- ADMIN BO'LIM 1: DASHBOARD VA MAHSULOTLAR BOSHQARUVI -->
+            <div id="admSecDashboard" class="space-y-6">
+                <!-- Statistika Kartochkalari -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <div class="text-xs font-bold text-gray-400 uppercase">Jami mahsulotlar</div>
+                        <div id="admStatProducts" class="text-2xl font-black text-gray-900 mt-1">112 ta</div>
+                        <div class="text-[11px] text-emerald-600 font-semibold mt-1">100 tasi Oziq-ovqat bo'limida</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <div class="text-xs font-bold text-gray-400 uppercase">Jami buyurtmalar</div>
+                        <div id="admStatOrders" class="text-2xl font-black text-bek mt-1">0 ta</div>
+                        <div class="text-[11px] text-gray-500 mt-1">Real vaqtda sinxronlangan</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <div class="text-xs font-bold text-gray-400 uppercase">Umumiy tushum (Savdo)</div>
+                        <div id="admStatRevenue" class="text-2xl font-black text-emerald-600 mt-1">0 so'm</div>
+                        <div class="text-[11px] text-gray-500 mt-1">Barcha faol buyurtmalar bo'yicha</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                        <div class="text-xs font-bold text-gray-400 uppercase">Ombordagi mavjud turlar</div>
+                        <div id="admStatInStock" class="text-2xl font-black text-sky-600 mt-1">0 ta</div>
+                        <div class="text-[11px] text-gray-500 mt-1">Sotuvga tayyor mahsulotlar</div>
+                    </div>
+                </div>
+
+                <!-- Yangi mahsulot qo'shish / Tahrirlash Formasi (Rasm yuklash bilan) -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 id="adminFormTitle" class="text-base sm:text-lg font-black text-gray-900 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-plus text-bek"></i> Yangi mahsulot qo'shish (yoki tahrirlash)
+                        </h2>
+                        <button type="button" onclick="resetAdminProductForm()" class="text-xs text-gray-500 hover:text-gray-800 font-semibold">Formani tozalash</button>
+                    </div>
+
+                    <form id="adminProductForm" onsubmit="saveAdminProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <input type="hidden" id="admEditProductId">
+
+                        <div class="lg:col-span-2">
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Mahsulot nomi *</label>
+                            <input type="text" id="admProdName" required placeholder="Masalan: Issiq Samarqand Obi noni" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Asosiy Kategoriya *</label>
+                            <select id="admProdCategory" onchange="toggleAdminSubcatSelect()" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek bg-white">
+                                <!-- JS orqali to'ldiriladi -->
+                            </select>
+                        </div>
+
+                        <div id="admSubcatWrapper">
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Oziq-ovqat ichki toifasi</label>
+                            <select id="admProdSubcat" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek bg-white">
+                                <!-- JS orqali to'ldiriladi -->
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Tannarxi (so'm) *</label>
+                            <input type="number" id="admProdCost" required placeholder="8000" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Sotuv narxi (so'm) *</label>
+                            <input type="number" id="admProdPrice" required placeholder="12000" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Eski narxi (chegirma uchun)</label>
+                            <input type="number" id="admProdOldPrice" placeholder="15000" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Birlik / Og'irlik va Muddati</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="admProdUnit" placeholder="1 kg / 1 dona" class="w-1/2 px-3 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                                <input type="text" id="admProdShelf" placeholder="6 oy / 5 kun" class="w-1/2 px-3 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-2">
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Qisqa tavsif *</label>
+                            <input type="text" id="admProdDesc" required placeholder="Mahsulot haqida batafsil ma'lumot..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                        </div>
+
+                        <!-- Rasm yuklash va Oldindan ko'rish (Preview) -->
+                        <div class="lg:col-span-2 flex items-center gap-3">
+                            <div class="flex-1">
+                                <label class="text-xs font-bold text-gray-600 block mb-1">Rasm yuklash (yoki URL yozish)</label>
+                                <div class="flex gap-2">
+                                    <input type="file" id="admProdFile" accept="image/*" onchange="previewAdminUploadedImage(event)" class="text-xs file:mr-2 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-bek/10 file:text-bek">
+                                    <input type="text" id="admProdImgUrl" placeholder="images/oziq-ovqat/non.jpg yoki URL" oninput="updateAdminUrlPreview(this.value)" class="flex-1 px-3 py-2 rounded-xl border border-gray-300 text-xs outline-none focus:border-bek">
+                                </div>
+                            </div>
+                            <img id="admImgPreview" src="https://placehold.co/100x100/7000FF/ffffff?text=Rasm" alt="Preview" class="w-14 h-14 rounded-xl object-cover border border-gray-300 shrink-0">
+                        </div>
+
+                        <div class="lg:col-span-4 flex justify-end gap-3 pt-2">
+                            <button type="submit" class="bg-bek hover:bg-bek-dark text-white font-extrabold px-6 py-2.5 rounded-xl text-sm shadow transition">
+                                <i class="fa-solid fa-floppy-disk mr-1"></i> Saqlash va Do'konda yangilash
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Ombor Mahsulotlar Ro'yxati, Qidirish va Kategoriya Filtri -->
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="p-4 border-b border-gray-200 flex flex-wrap items-center justify-between gap-3">
+                        <h3 class="font-black text-gray-800 text-sm sm:text-base">Ombordagi barcha mahsulotlar ro'yxati</h3>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <input type="text" id="admSearchInput" oninput="renderAdminProductsTable()" placeholder="Ombordan qidirish..." class="px-3.5 py-2 rounded-xl border border-gray-300 text-xs sm:text-sm outline-none focus:border-bek">
+                            <select id="admFilterCat" onchange="renderAdminProductsTable()" class="px-3.5 py-2 rounded-xl border border-gray-300 text-xs sm:text-sm outline-none focus:border-bek bg-white font-semibold">
+                                <option value="Barchasi">Barcha kategoriyalar</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto max-h-[540px]">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead class="bg-gray-100 text-gray-600 uppercase text-[11px] sticky top-0 z-10">
+                                <tr>
+                                    <th class="p-3">Rasm va Nomi</th>
+                                    <th class="p-3">Toifa / Rasm yo'li</th>
+                                    <th class="p-3">Tannarx (so'm)</th>
+                                    <th class="p-3">Sotuv narxi (so'm)</th>
+                                    <th class="p-3">Ombor holati</th>
+                                    <th class="p-3 text-right">Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admProductsTableBody" class="divide-y divide-gray-200">
+                                <!-- JS orqali to'ldiriladi -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADMIN BO'LIM 2: BUYURTMALAR VA HOLATNI O'ZGARTIRISH -->
+            <div id="admSecOrders" class="hidden bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                <h2 class="text-lg font-black text-gray-900 mb-4">Mijozlar buyurtmalari va holatni boshqarish</h2>
+                <div id="admOrdersContainer" class="space-y-4">
+                    <!-- JS orqali to'ldiriladi -->
+                </div>
+            </div>
+
+            <!-- ADMIN BO'LIM 3: KATEGORIYALARNI QO'SHISH / O'CHIRISH -->
+            <div id="admSecCategories" class="hidden bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-5">
+                <h2 class="text-lg font-black text-gray-900">Kategoriyalarni boshqarish</h2>
+                <form onsubmit="addAdminCategory(event)" class="flex gap-3 max-w-md">
+                    <input type="text" id="newCategoryName" required placeholder="Yangi kategoriya nomi..." class="flex-1 px-4 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                    <button type="submit" class="bg-bek text-white font-bold px-5 py-2.5 rounded-xl text-sm">Qo'shish</button>
+                </form>
+                <div id="admCategoriesList" class="flex flex-wrap gap-2.5">
+                    <!-- JS orqali to'ldiriladi -->
+                </div>
+            </div>
+
+            <!-- ADMIN BO'LIM 4: MIJOZLAR CHATI -->
+            <div id="admSecChat" class="hidden bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div class="p-4 bg-slate-900 text-white font-bold text-sm">Mijozlar bilan onlayn chat-bot yozishmalari</div>
+                <div id="admChatMessages" class="p-4 h-96 overflow-y-auto space-y-3 bg-gray-50"></div>
+                <form onsubmit="sendAdminChatReply(event)" class="p-3 border-t border-gray-200 flex gap-2 bg-white">
+                    <input type="text" id="admChatInput" required placeholder="Admin nomidan mijozga javob yozing..." class="flex-1 px-4 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek">
+                    <button type="submit" class="bg-bek text-white font-bold px-6 py-2.5 rounded-xl text-sm">Yuborish</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- 3-QISM: MODAL OYNALAR (OLMA 3D KIRISH, BATAFSIL, SAVAT, SEVIMLILAR)       -->
+    <!-- ========================================================================= -->
+
+    <!-- OLMA SHAKLIDAGI NEON SHAFFOF 3D KIRISH / ADMIN OYNASI -->
+    <div id="authModal" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-slate-950/75 backdrop-blur-md p-4">
+        <button onclick="closeAuthModal()" class="fixed top-6 right-6 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white border border-white/50 flex items-center justify-center text-xl z-[1010] transition">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="flex flex-col items-center">
+            <div class="mb-3 px-4 py-1.5 rounded-full bg-white/10 border border-white/40 text-white text-xs font-medium backdrop-blur-md text-center">
+                🍏 Olma oynasiga <b>2 marta chap tugmani bosing (Double-Click)</b> — gorizontal aylanib alohida Admin kirish qismi ochiladi!
+            </div>
+
+            <div class="apple-scene" ondblclick="flipAppleCard()">
+                <div class="apple-stem"></div>
+                <div class="apple-leaf"></div>
+
+                <div class="apple-card-3d" id="appleCard3D">
+                    <!-- OLD TOMONI: XARIDOR RO'YXATDAN O'TISH -->
+                    <div class="apple-face" ondblclick="flipAppleCard()">
+                        <div class="text-center mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/20 border border-white mx-auto flex items-center justify-center text-2xl mb-2 shadow-[0_0_15px_#fff]">
+                                <i class="fa-brands fa-apple"></i>
+                            </div>
+                            <h3 class="text-xl font-black tracking-wide">BEK MARKET</h3>
+                            <p class="text-xs text-purple-100">Xaridor sifatida kirish / ro'yxatdan o'tish</p>
+                        </div>
+
+                        <form onsubmit="handleCustomerAuth(event)" class="space-y-3" onclick="event.stopPropagation()">
+                            <div>
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-purple-100 block mb-1">Ism va familiyangiz</label>
+                                <input type="text" id="custAuthName" required placeholder="Ismingizni kiriting" class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-purple-100 block mb-1">Telefon raqamingiz (+998)</label>
+                                <input type="tel" id="custAuthPhone" required value="+998 " placeholder="+998 90 123 45 67" class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-purple-100 block mb-1">Parol</label>
+                                <input type="password" id="custAuthPass" required placeholder="••••••••" class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-white text-bek font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.8)] hover:scale-[1.02] transition mt-2">
+                                Tasdiqlash va Kirish
+                            </button>
+                        </form>
+
+                        <p class="text-[11px] text-white/75 text-center mt-4">
+                            Ikki marta bosing yoki <button type="button" onclick="flipAppleCard(); event.stopPropagation();" class="underline font-bold text-white">aylantiring ↻</button>
+                        </p>
+                    </div>
+
+                    <!-- ORQA TOMONI: ALOHIDA ADMIN PANELGA O'TISH -->
+                    <div class="apple-face apple-face-back" ondblclick="flipAppleCard()">
+                        <div class="text-center mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/20 border border-white mx-auto flex items-center justify-center text-2xl mb-2 shadow-[0_0_15px_#fff]">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <h3 class="text-xl font-black tracking-wide">ADMIN KIRISH</h3>
+                            <p class="text-xs text-rose-100">Alohida Admin sahifasiga o'tish</p>
+                        </div>
+
+                        <form onsubmit="handleAdminLogin(event)" class="space-y-3" onclick="event.stopPropagation()">
+                            <div>
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-rose-100 block mb-1">Admin Login</label>
+                                <input type="text" id="admLoginUser" value="admin" required class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-rose-100 block mb-1">Admin Parol</label>
+                                <input type="password" id="admLoginPass" value="1234" required class="glass-input w-full px-3.5 py-2.5 rounded-xl text-sm">
+                            </div>
+                            <div class="bg-white/15 border border-white/40 rounded-lg px-3 py-1.5 text-[11px] text-center">
+                                Login: <b>admin</b> | Parol: <b>1234</b>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-white text-rose-600 font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.85)] hover:scale-[1.02] transition">
+                                Admin Sahifasini Ochish
+                            </button>
+                        </form>
+
+                        <p class="text-[11px] text-white/75 text-center mt-4">
+                            <button type="button" onclick="flipAppleCard(); event.stopPropagation();" class="underline font-bold text-white">↺ Xaridor oynasiga qaytish</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAHSULOT BATAFSIL MA'LUMOTI MODAL OYNASI -->
+    <div id="productDetailModal" class="fixed inset-0 z-[950] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative">
+            <button onclick="closeProductDetailModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="productDetailBody" class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center"></div>
+        </div>
+    </div>
+
+    <!-- SAVAT VA BUYURTMA BERISH MODAL OYNASI -->
+    <div id="cartModal" class="fixed inset-0 z-[950] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+            <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+                <h2 class="text-lg sm:text-xl font-black flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-bek"></i> Xarid savati va Buyurtma berish
+                </h2>
+                <button onclick="closeCartModal()" class="w-8 h-8 rounded-full hover:bg-gray-200 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
+                <!-- Savat ro'yxati -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold uppercase text-gray-500">Tanlangan mahsulotlar</span>
+                        <button onclick="clearCartAll()" class="text-xs text-rose-600 hover:underline font-bold">Savatni tozalash</button>
+                    </div>
+                    <div id="cartItemsContainer" class="space-y-3 flex-1"></div>
+                </div>
+
+                <!-- Buyurtma formasi (Naqd / Click / Payme va +998 tekshiruvi) -->
+                <div class="lg:col-span-5 bg-gray-50 p-5 rounded-2xl border border-gray-200 h-fit">
+                    <h3 class="font-black text-gray-900 text-base mb-4">Buyurtmani rasmiylashtirish</h3>
+                    <form id="checkoutForm" onsubmit="submitCustomerOrder(event)" class="space-y-3.5">
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Ism va familiyangiz *</label>
+                            <input type="text" id="chkName" required placeholder="Sardor Aliyev" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek bg-white">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Telefon raqamingiz (+998 formatda) *</label>
+                            <input type="tel" id="chkPhone" required value="+998 " placeholder="+998 90 123 45 67" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek bg-white">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">Yetkazib berish manzili *</label>
+                            <input type="text" id="chkAddress" required placeholder="Shahar, tuman, ko'cha, uy raqami" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm outline-none focus:border-bek bg-white">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-600 block mb-1">To'lov turi *</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="paymentType" value="Naqd" checked class="peer hidden">
+                                    <div class="p-2.5 text-center rounded-xl border border-gray-300 bg-white peer-checked:border-bek peer-checked:bg-bek/10 peer-checked:text-bek text-xs font-bold transition">
+                                        💵 Naqd
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="paymentType" value="Click" class="peer hidden">
+                                    <div class="p-2.5 text-center rounded-xl border border-gray-300 bg-white peer-checked:border-sky-500 peer-checked:bg-sky-50 peer-checked:text-sky-600 text-xs font-bold transition">
+                                        🔵 Click
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="paymentType" value="Payme" class="peer hidden">
+                                    <div class="p-2.5 text-center rounded-xl border border-gray-300 bg-white peer-checked:border-teal-500 peer-checked:bg-teal-50 peer-checked:text-teal-600 text-xs font-bold transition">
+                                        🟢 Payme
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-3 space-y-1 text-sm">
+                            <div class="flex justify-between text-gray-500">
+                                <span>Jami miqdor:</span>
+                                <span id="chkTotalQty">0 dona</span>
+                            </div>
+                            <div class="flex justify-between text-base font-black text-gray-900 pt-1">
+                                <span>Umumiy narx:</span>
+                                <span id="chkTotalPrice" class="text-bek">0 so'm</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-bek hover:bg-bek-dark text-white font-black py-3 rounded-xl shadow-lg shadow-bek/30 transition text-sm">
+                            Buyurtmani tasdiqlash
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEVIMLILAR MODAL OYNASI -->
+    <div id="favoritesModal" class="fixed inset-0 z-[950] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col">
+            <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+                <h2 class="text-lg font-black flex items-center gap-2"><i class="fa-solid fa-heart text-pink-600"></i> Saralangan mahsulotlar</h2>
+                <button onclick="closeFavoritesModal()" class="w-8 h-8 rounded-full hover:bg-gray-200 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="favoritesListBody" class="p-6 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+        </div>
+    </div>
+
+    <!-- SUZUVCHI CHAT-BOT VIDJETI -->
+    <div class="fixed bottom-5 right-5 z-[850]">
+        <div id="chatWidgetWindow" class="hidden w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden mb-3 flex-col h-[420px]">
+            <div class="bg-gradient-to-r from-bek to-purple-600 text-white p-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">BEK MARKET — Yordamchi Bot</div>
+                        <div class="text-[11px] text-purple-100">Admin bilan tezkor muloqot</div>
+                    </div>
+                </div>
+                <button onclick="toggleChatWidget()" class="text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="userChatBox" class="flex-1 p-3.5 overflow-y-auto space-y-2.5 bg-slate-50 text-xs sm:text-sm"></div>
+            <form onsubmit="sendCustomerChatMessage(event)" class="p-2.5 bg-white border-t border-gray-200 flex gap-2">
+                <input type="text" id="userChatInput" required placeholder="Xabaringizni yozing..." class="flex-1 px-3 py-2 rounded-xl border border-gray-300 text-xs sm:text-sm outline-none focus:border-bek">
+                <button type="submit" class="bg-bek text-white w-9 h-9 rounded-xl flex items-center justify-center"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+            </form>
+        </div>
+
+        <button onclick="toggleChatWidget()" class="ml-auto w-14 h-14 rounded-full bg-gradient-to-tr from-bek to-pink-600 text-white shadow-xl flex items-center justify-center text-2xl hover:scale-105 transition">
+            <i class="fa-solid fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT: 100 TA OZIQ-OVQAT BAZASI, MIJOZ VA ADMIN LOGIKASI             -->
+    <!-- ========================================================================= -->
+    <script>
+        // 1. ADMIN KIRISH PAROLLARI (O'zgartirish mumkin)
+        const ADMIN_CREDENTIALS = {
+            login: "admin",
+            pass: "1234"
+        };
+
+        // 2. KATEGORIYALAR VA OZIQ-OVQAT ICHKI TOIFALARI
+        const DEFAULT_CATEGORIES = [
+            "Elektronika",
+            "Kiyim",
+            "Uy-ro'zg'or",
+            "Go'zallik",
+            "Bolalar",
+            "Sport",
+            "Oziq-ovqat"
+        ];
+
+        const FOOD_SUBCATEGORIES = [
+            "Barchasi",
+            "Non va un mahsulotlari",
+            "Sut mahsulotlari",
+            "Go'sht va parranda",
+            "Meva-sabzavot",
+            "Quruq mevalar va yong'oqlar",
+            "Ichimliklar",
+            "Shirinliklar",
+            "Yog' va ziravorlar",
+            "Konserva",
+            "Dukkakli va yormalar"
+        ];
+
+        // 3. HAQIQIY MAHSULOT RASMLARI BILAN 100 TA OZIQ-OVQAT MAHSULOTI GENERATORI
+        // Har bir mahsulotning o'z "images/oziq-ovqat/..." yo'li va o'ziga mos haqiqiy Unsplash rasmi bor
+        const P = {
+            non: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80",
+            baget: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=500&q=80",
+            bulochka: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80",
+            un: "https://images.unsplash.com/photo-1627483262768-04d0a1401487?auto=format&fit=crop&w=500&q=80",
+            makaron: "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=500&q=80",
+            sut: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=500&q=80",
+            pishloq: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=500&q=80",
+            yogurt: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=500&q=80",
+            saryog: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=500&q=80",
+            tuxum: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=500&q=80",
+            gosht: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=500&q=80",
+            steyk: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80",
+            tovuq: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=500&q=80",
+            kolbasa: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+            baliq: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80",
+            olma: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=500&q=80",
+            banan: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",
+            pomidor: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80",
+            bodring: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=500&q=80",
+            kartoshka: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=500&q=80",
+            sabzi: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=500&q=80",
+            uzum: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=500&q=80",
+            qulupnay: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=500&q=80",
+            apelsin: "https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=500&q=80",
+            yongoq: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=500&q=80",
+            bodom: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=500&q=80",
+            pista: "https://images.unsplash.com/photo-1525351326368-efbb5cb6814d?auto=format&fit=crop&w=500&q=80",
+            xurmo: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80",
+            suv: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=500&q=80",
+            cola: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=500&q=80",
+            sharbat: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=500&q=80",
+            choy: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=500&q=80",
+            qahva: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=500&q=80",
+            shokolad: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=500&q=80",
+            asal: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=500&q=80",
+            tort: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80",
+            pechenye: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=500&q=80",
+            yog: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=500&q=80",
+            ziravor: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80",
+            konserva: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=500&q=80",
+            guruch: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80",
+            loviya: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=500&q=80"
+        };
+
+        // 100 ta Oziq-ovqat mahsulotlari ro'yxati (10 ta toifada 10 tadan = 100 ta)
+        const rawFoodCatalog = [
+            // 1. Non va un mahsulotlari (10 ta)
+            ["Issiq Toshkent patir noni", "Non va un mahsulotlari", 5000, "1 dona (400 g)", "3 kun", "tandir-non.jpg", P.non, "Yangi yopilgan xushbo'y kunjutli Toshkent patir noni."],
+            ["Samarqand mashhur Obi noni", "Non va un mahsulotlari", 8000, "1 dona (600 g)", "5 kun", "samarqand-non.jpg", P.non, "An'anaviy usulda yopilgan haqiqiy Samarqand noni."],
+            ["Fransuzcha qarsildoq Baget noni", "Non va un mahsulotlari", 9500, "1 dona (300 g)", "2 kun", "baget-non.jpg", P.baget, "Nonushta va sendvichlar uchun yangi pishirilgan baget."],
+            ["Toster uchun kesilgan qolipli non", "Non va un mahsulotlari", 7500, "450 g", "5 kun", "toster-non.jpg", P.baget, "Yumshoq bo'laklarga kesilgan sendvich noni."],
+            ["Parhez javdar (qora) noni", "Non va un mahsulotlari", 8500, "400 g", "5 kun", "qora-non.jpg", P.non, "Salomatlik uchun foydali vitaminlarga boy javdar noni."],
+            ["Oliy navli bug'doy uni 'Makfa'", "Non va un mahsulotlari", 14500, "1 kg", "12 oy", "un-1kg.jpg", P.un, "Pishiriqlar, non va xamir ovqatlar uchun oliy navli oq un."],
+            ["Qozog'iston oliy navli bug'doy uni", "Non va un mahsulotlari", 62000, "5 kg", "12 oy", "un-5kg.jpg", P.un, "Oila uchun qulay 5 kg qadoqdagi sifatli bug'doy uni."],
+            ["Yupqa arman lavash xamiri (5 dona)", "Non va un mahsulotlari", 11000, "350 g", "7 kun", "lavash.jpg", P.baget, "Uyda tez tayyorlanadigan pishiriq va ruletlar uchun lavash."],
+            ["Shokoladli fransuz kruassani", "Non va un mahsulotlari", 12000, "2 dona", "3 kun", "kruassan.jpg", P.bulochka, "Ichida eritilgan Belgiya shokoladi bo'lgan qatlamali kruassan."],
+            ["Mayizli va vanilli yumshoq bulochka", "Non va un mahsulotlari", 6500, "2 dona", "3 kun", "bulochka.jpg", P.bulochka, "Choy va qahva bilan tanovul qilish uchun shirin bulochka."],
+
+            // 2. Sut mahsulotlari (10 ta)
+            ["Tabiiy pasterizatsiyalangan sut 3.2%", "Sut mahsulotlari", 11500, "1 litr", "10 kun", "sut-1l.jpg", P.sut, "Har kuni fermadan keltiriladigan yangi va foydali sigir suti."],
+            ["Qishloq qaymog'i (Smetana) 20%", "Sut mahsulotlari", 16000, "400 g", "7 kun", "qaymoq.jpg", P.yogurt, "Quyuq va mazali tabiiy qaymoq, nonushta uchun a'lo."],
+            ["Bio-Kefir 2.5% yog'lilikda", "Sut mahsulotlari", 12500, "900 ml", "10 kun", "kefir.jpg", P.sut, "Ovqat hazm qilishni yaxshilovchi foydali bio-kefir."],
+            ["Tabiiy yog'sizlantirilgan Tvorog", "Sut mahsulotlari", 22000, "500 g", "5 kun", "tvorog.jpg", P.yogurt, "Kalsiy va oqsilga boy yangi tvorog mahsuloti."],
+            ["Sariyog' 'President' 82.5%", "Sut mahsulotlari", 29500, "200 g", "60 kun", "saryog.jpg", P.saryog, "Sof qaymoqdan tayyorlangan yuqori sifatli sariyog'."],
+            ["Golland pishlog'i (Gouda)", "Sut mahsulotlari", 46000, "400 g", "90 kun", "pishloq-gouda.jpg", P.pishloq, "Sendvich va pitsalar uchun ajoyib eriydigan Golland pishlog'i."],
+            ["Mevali qulupnayli yogurt 'Activia'", "Sut mahsulotlari", 8500, "290 g", "14 kun", "yogurt.jpg", P.yogurt, "Tabiiy qulupnay bo'lakchalari qo'shilgan shirin yogurt."],
+            ["Yangi uy qatig'i", "Sut mahsulotlari", 9000, "1 litr", "7 kun", "qatiq.jpg", P.sut, "Salqin va tetiklashtiruvchi tabiiy uy qatig'i."],
+            ["Quyuqlashtirilgan shirin sut (Sgushonka)", "Sut mahsulotlari", 17500, "380 g", "12 oy", "sgushonka.jpg", P.sut, "Shirinliklar va nonushta uchun haqiqiy quyuqlashtirilgan sut."],
+            ["Yangi ferma tovuq tuxumlari (10 dona)", "Sut mahsulotlari", 16500, "10 dona", "25 kun", "tuxum-10.jpg", P.tuxum, "Sarig'i to'q va yirik bo'lgan yangi ferma tuxumlari."],
+
+            // 3. Go'sht va parranda (10 ta)
+            ["Yangi suyakli mol go'shti", "Go'sht va parranda", 89000, "1 kg", "3 kun", "mol-goshti.jpg", P.gosht, "Sho'rva va palov uchun sarxil halol mol go'shti."],
+            ["Suyaksiz mol lahm go'shti (Bon-file)", "Go'sht va parranda", 108000, "1 kg", "3 kun", "mol-lahm.jpg", P.steyk, "Yog'siz, yumshoq va toza mol lahm go'shti."],
+            ["Yangi barra qo'y go'shti", "Go'sht va parranda", 98000, "1 kg", "3 kun", "qoy-goshti.jpg", P.gosht, "Kabob, qozonkabob va to'yimli taomlar uchun qo'y go'shti."],
+            ["Tayyor yog'siz mol go'shti qiymasi", "Go'sht va parranda", 86000, "1 kg", "2 kun", "qiyma.jpg", P.gosht, "Manti, chuchvara va kotletlar uchun yangi tortilgan qiyma."],
+            ["Yangi sovutilgan butun tovuq go'shti", "Go'sht va parranda", 36000, "1 kg", "5 kun", "butun-tovuq.jpg", P.tovuq, "Halol so'yilgan, muzlatilmagan yangi broyler tovuq."],
+            ["Parhez tovuq ko'krak filesi", "Go'sht va parranda", 49000, "1 kg", "5 kun", "tovuq-file.jpg", P.tovuq, "Sportchilar va parhez tutuvchilar uchun yog'siz tovuq filesi."],
+            ["Tovuq qanotchalari (Krilishki)", "Go'sht va parranda", 39000, "1 kg", "5 kun", "tovuq-qanot.jpg", P.tovuq, "Qovurish va gril qilish uchun tayyor tovuq qanotlari."],
+            ["Kurka (Indeyka) lahm filesi", "Go'sht va parranda", 68000, "1 kg", "5 kun", "kurka-gosht.jpg", P.tovuq, "Yumshoq va vitaminlarga boy parhez kurka go'shti."],
+            ["Halol dudlangan 'Doktorskaya' kolbasasi", "Go'sht va parranda", 44000, "500 g", "30 kun", "kolbasa.jpg", P.kolbasa, "Nonushta va salatlar uchun mazali halol kolbasa."],
+            ["Yangi Norvegiya Forel balig'i steyki", "Go'sht va parranda", 135000, "1 kg", "3 kun", "baliq-forel.jpg", P.baliq, "Omega-3 ga boy yangi va toza qizil baliq go'shti."],
+
+            // 4. Meva-sabzavot (10 ta)
+            ["Qizil shirin 'Golden/Gala' olmasi", "Meva-sabzavot", 16000, "1 kg", "15 kun", "qizil-olma.jpg", P.olma, "Bog'dan yangi uzilgan sersuv va qarsildoq olma."],
+            ["Ekvador yirik shirin bananlari", "Meva-sabzavot", 23000, "1 kg", "7 kun", "banan.jpg", P.banan, "Pishgan va xushbo'y import Ekvador bananlari."],
+            ["Pushti Toshkent pomidori (Yusuf)", "Meva-sabzavot", 19000, "1 kg", "7 kun", "pomidor.jpg", P.pomidor, "Salatlar uchun juda shirin va etdor pushti pomidor."],
+            ["Yangi qarsildoq issiqxona bodringi", "Meva-sabzavot", 14000, "1 kg", "7 kun", "bodring.jpg", P.bodring, "Mayda urug'li, yangi uzilgan barra bodring."],
+            ["Saralangan yirik oq kartoshka", "Meva-sabzavot", 6500, "1 kg", "30 kun", "kartoshka.jpg", P.kartoshka, "Qovurish va pishirishda ezilib ketmaydigan toza kartoshka."],
+            ["Osh uchun sariq va qizil sabzi", "Meva-sabzavot", 5500, "1 kg", "30 kun", "sabzi.jpg", P.sabzi, "Haqiqiy o'zbek palovi uchun shirin sersuv sabzi."],
+            ["Toza oltinrang bosh piyoz", "Meva-sabzavot", 4500, "1 kg", "45 kun", "piyoz.jpg", P.kartoshka, "Har bir taomga lazzat beruvchi quruq va sifatli piyoz."],
+            ["Sersuv shirin Apelsin (Misr)", "Meva-sabzavot", 24000, "1 kg", "20 kun", "apelsin.jpg", P.apelsin, "Vitamin C manbai bo'lgan shirin va po'sti yupqa apelsin."],
+            ["Qora va oq Kishmish uzumi", "Meva-sabzavot", 28000, "1 kg", "10 kun", "uzum.jpg", P.uzum, "Danaksiz, asaldek shirin yangi uzum."],
+            ["Yangi uzilgan xushbo'y Qulupnay", "Meva-sabzavot", 42000, "500 g", "4 kun", "qulupnay.jpg", P.qulupnay, "Saralangan yirik va shirin qulupnay qadoqda."],
+
+            // 5. Quruq mevalar va yong'oqlar (10 ta)
+            ["Tozalangan yirik Grek yong'og'i mag'zi", "Quruq mevalar va yong'oqlar", 48000, "500 g", "6 oy", "yongoq-magiz.jpg", P.yongoq, "Miya faoliyati uchun foydali oq va yirik yong'oq mag'zi."],
+            ["Qovurilgan shirin Bodom mag'zi", "Quruq mevalar va yong'oqlar", 55000, "500 g", "6 oy", "bodom.jpg", P.bodom, "Tanlab olingan yirik va mazali bodom donalari."],
+            ["Sho'r va xushbo'y Eron xandon pistasi", "Quruq mevalar va yong'oqlar", 78000, "500 g", "6 oy", "pista.jpg", P.pista, "Og'zi ochiq, yirik va yangi qovurilgan xandon pista."],
+            ["Keshyu (Cashew) yong'og'i", "Quruq mevalar va yong'oqlar", 64000, "500 g", "6 oy", "keshyu.jpg", P.bodom, "Yumshoq va qaymoq ta'mli foydali keshyu yong'og'i."],
+            ["Qora Soyagi mayiz (danaksiz)", "Quruq mevalar va yong'oqlar", 38000, "500 g", "12 oy", "qora-mayiz.jpg", P.xurmo, "Yurak uchun eng foydali soyada quritilgan yirik qora mayiz."],
+            ["Oltinrang osh mayizi", "Quruq mevalar va yong'oqlar", 26000, "500 g", "12 oy", "sariq-mayiz.jpg", P.xurmo, "To'y oshi va pishiriqlar uchun tozalangan sariq mayiz."],
+            ["Samarqand quritilgan bargak turshagi (Kuraga)", "Quruq mevalar va yong'oqlar", 32000, "500 g", "12 oy", "turshak.jpg", P.xurmo, "Yumshoq va asaldek shirin o'rik qoqisi."],
+            ["Arabiston shirin Xurmosi (Finiki)", "Quruq mevalar va yong'oqlar", 29000, "500 g", "12 oy", "xurmo.jpg", P.xurmo, "Quvvat baxsh etuvchi tabiiy shirin xurmo."],
+            ["Tozalangan qovurilgan Yeryong'oq", "Quruq mevalar va yong'oqlar", 18000, "500 g", "6 oy", "yeryongoq.jpg", P.yongoq, "Oqsilga boy yangi qovurilgan yeryong'oq."],
+            ["Quritilgan shirin Anjir qoqisi", "Quruq mevalar va yong'oqlar", 45000, "500 g", "12 oy", "anjir.jpg", P.xurmo, "Immunitetni ko'taruvchi tabiiy quritilgan anjir."],
+
+            // 6. Ichimliklar (10 ta)
+            ["Tog' buloq suvi 'Nestle / Hydrolife' (gazsiz)", "Ichimliklar", 4500, "1.5 litr", "12 oy", "suv-15l.jpg", P.suv, "Kundalik ichish uchun toza tog' mineral suvi."],
+            ["Coca-Cola Classic gazlangan ichimligi", "Ichimliklar", 13000, "1.5 litr", "6 oy", "coca-cola.jpg", P.cola, "Muzdek tetiklashtiruvchi klassik Coca-Cola ichimligi."],
+            ["Fanta Apelsin ta'mli gazli ichimlik", "Ichimliklar", 13000, "1.5 litr", "6 oy", "fanta.jpg", P.sharbat, "Apelsin sharbati qo'shilgan sevimli gazli ichimlik."],
+            ["Pepsi-Cola gazlangan ichimligi", "Ichimliklar", 12500, "1.5 litr", "6 oy", "pepsi.jpg", P.cola, "Bayram dasturxoni uchun tetiklashtiruvchi Pepsi."],
+            ["Tabiiy meva sharbati 'Dena / Bliss' (Olma-Shaftoli)", "Ichimliklar", 14500, "1 litr", "12 oy", "sharbat-dena.jpg", P.sharbat, "Konservantlarsiz 100% tabiiy meva nektari."],
+            ["Ko'k choy 'Tess / Ahmad Tea' bargli", "Ichimliklar", 19500, "100 g", "24 oy", "kok-choy.jpg", P.choy, "Xushbo'y va chanqoqbosdi oliy navli ko'k choy."],
+            ["Qora Keniya choyi 'Lipton / Impra'", "Ichimliklar", 21000, "100 g", "24 oy", "qora-choy.jpg", P.choy, "To'q rang va boy ta'mga ega Keniya qora choyi."],
+            ["Eriydigan tabiiy qahva 'Nescafe Gold'", "Ichimliklar", 46000, "190 g", "24 oy", "qahva-gold.jpg", P.qahva, "Arabika donalaridan tayyorlangan xushbo'y qahva."],
+            ["Salqin ko'k choy 'Fuse Tea' (Mango-Moychechak)", "Ichimliklar", 9500, "1 litr", "6 oy", "fusetea.jpg", P.sharbat, "Issiq kunlarda chanqoqni qondiruvchi mevali yaxna choy."],
+            ["Mineral shifobaxsh gazli suv 'Borjomi / Chortoq'", "Ichimliklar", 11000, "0.5 litr", "12 oy", "chortoq-suv.jpg", P.suv, "Foydali minerallarga boy shifobaxsh suv."],
+
+            // 7. Shirinliklar (10 ta)
+            ["Sutli va yong'oqli 'Alpen Gold / Milka' shokoladi", "Shirinliklar", 14000, "90 g", "12 oy", "shokolad-milka.jpg", P.shokolad, "Og'izda eriydigan alp suti va o'rmon yong'oqli shokolad."],
+            ["Shokoladli batonchik 'Snickers Super'", "Shirinliklar", 9500, "80 g", "9 oy", "snickers.jpg", P.shokolad, "Yeryong'oq, karamel va nuga bilan to'ldirilgan shokolad."],
+            ["Shokolad-yong'oqli pasta 'Nutella'", "Shirinliklar", 49000, "350 g", "12 oy", "nutella.jpg", P.shokolad, "Nonushta uchun bolalar va kattalar sevib yeydigan Nutella."],
+            ["Tabiiy tog' gullari Asali", "Shirinliklar", 58000, "500 g", "24 oy", "tog-asali.jpg", P.asal, "100% toza va shifobaxsh tabiiy tog' asali."],
+            ["Qulupnayli uy murabbosi (Varenye)", "Shirinliklar", 24000, "450 g", "12 oy", "murabbo.jpg", P.qulupnay, "Butun qulupnay mevalaridan tayyorlangan shirin murabbo."],
+            ["Qaymoqli va shokoladli Vafli to'plami", "Shirinliklar", 15000, "300 g", "6 oy", "vafli.jpg", P.pechenye, "Choy dasturxoni uchun qarsildoq shirin vaflilar."],
+            ["Suli yormasidan pishirilgan 'Ovsyanoye' pechenye", "Shirinliklar", 13500, "400 g", "6 oy", "pechenye.jpg", P.pechenye, "Foydali va to'yimli suli pechenyesi."],
+            ["Qo'qon yong'oqli va kunjutli Xolvasi", "Shirinliklar", 22000, "500 g", "4 oy", "xolva.jpg", P.tort, "Qaymoq va xandon pista qo'shilgan haqiqiy Qo'qon xolvasi."],
+            ["Sovg'abop shokolad konfetlar qutisi 'Raffaello'", "Shirinliklar", 48000, "150 g", "9 oy", "raffaello.jpg", P.tort, "Kokos va butun bodom mag'ziga ega nafis shirinlik."],
+            ["Qadoqlangan oq qand va shakar", "Shirinliklar", 13000, "1 kg", "24 oy", "shakar.jpg", P.un, "Toza kristall shakar kundalik ehtiyoj uchun."],
+
+            // 8. Yog' va ziravorlar (10 ta)
+            ["Tozalangan kungaboqar yog'i 'Sloboda / Oltin Don'", "Yog' va ziravorlar", 19500, "1 litr", "12 oy", "kungaboqar-yog.jpg", P.yog, "Hidsizlantirilgan, qovurish va salatlar uchun toza yog'."],
+            ["Sovuq siqilgan Extra Virgin Zaytun yog'i", "Yog' va ziravorlar", 68000, "500 ml", "18 oy", "zaytun-yog.jpg", P.yog, "Salatlar va sog'lom ovqatlanish uchun Ispaniya zaytun yog'i."],
+            ["Osh uchun toza Zig'ir yog'i", "Yog' va ziravorlar", 34000, "500 ml", "12 oy", "zigir-yog.jpg", P.yog, "Palovga betakror ta'm beruvchi haqiqiy zig'ir yog'i."],
+            ["Yodlangan osh tuzi (Extra)", "Yog' va ziravorlar", 3500, "1 kg", "24 oy", "tuz.jpg", P.un, "Mayda tozalangan yodlangan oshxona tuzi."],
+            ["Xushbo'y tog' Zirasi (Palov uchun)", "Yog' va ziravorlar", 15000, "100 g", "12 oy", "zira.jpg", P.ziravor, "Taomlarga ajoyib hid beruvchi tozalangan tog' zirasi."],
+            ["Tuyilgan qora va qizil murch to'plami", "Yog' va ziravorlar", 9000, "50 g", "12 oy", "murch.jpg", P.ziravor, "Yangi tuyilgan o'tkir va xushbo'y murch."],
+            ["Palov uchun maxsus ziravorlar aralashmasi", "Yog' va ziravorlar", 8000, "100 g", "12 oy", "palov-ziravor.jpg", P.ziravor, "Zirk, zira, za'faron va quritilgan pomidor aralashmasi."],
+            ["Mayonez 'Provansal 67%'", "Yog' va ziravorlar", 13500, "400 g", "90 kun", "mayonez.jpg", P.yogurt, "Salatlar va pishiriqlar uchun quyuq klassik mayonez."],
+            ["Tabiiy pomidordan 'Heinz / Tanho' Ketchupi", "Yog' va ziravorlar", 14500, "350 g", "12 oy", "ketchup.jpg", P.pomidor, "Kabob va fast-fud taomlari uchun mazali pomidor sousi."],
+            ["Soya sousi 'Sen Soy Classic'", "Yog' va ziravorlar", 16000, "250 ml", "18 oy", "soya-sous.jpg", P.yog, "Salatlar va go'sht marinadlash uchun tabiiy soya sousi."],
+
+            // 9. Konserva (10 ta)
+            ["Shirin ko'k no'xat konservasi 'Bonduelle'", "Konserva", 16500, "400 g", "24 oy", "kok-noxat.jpg", P.konserva, "Olivye va boshqa salatlar uchun yumshoq ko'k no'xat."],
+            ["Shirin makkajo'xori konservasi 'Bonduelle'", "Konserva", 16500, "340 g", "24 oy", "makkajoxori.jpg", P.konserva, "Sersuv va shirin oltinrang makkajo'xori donalari."],
+            ["Qovurish va osh uchun quyuq Tomat pastasi", "Konserva", 15000, "500 g", "18 oy", "tomat-pasta.jpg", P.pomidor, "100% pishgan pomidorlardan tayyorlangan quyuq tomat."],
+            ["Zaytun yog'idagi Tunes (Tuna) baliq konservasi", "Konserva", 24000, "185 g", "24 oy", "tunes-baliq.jpg", P.konserva, "Salat va sendvichlar uchun tayyor suyaksiz baliq."],
+            ["Tomat sousidagi Kilka / Shprot baliq konservasi", "Konserva", 14000, "240 g", "24 oy", "shprot.jpg", P.konserva, "An'anaviy usulda tayyorlangan mazali baliq konservasi."],
+            ["Halol dimlangan mol go'shti (Tushonka)", "Konserva", 36000, "338 g", "24 oy", "tushonka.jpg", P.konserva, "Tez ovqat tayyorlash uchun yirik bo'lakli mol go'shti."],
+            ["Marinadlangan qarsildoq kichik bodringlar (Kornishon)", "Konserva", 19000, "720 ml", "24 oy", "tuzlama-bodring.jpg", P.bodring, "Bayram dasturxoni va salatlar uchun tuzlangan bodring."],
+            ["Marinadlangan Shampinyon qo'ziqorinlari", "Konserva", 23000, "400 g", "24 oy", "qoziqorin.jpg", P.konserva, "Salat va pitsalar uchun kesilgan tayyor qo'ziqorinlar."],
+            ["Danaksiz qora va yashil Zaytun (Olivki)", "Konserva", 18500, "300 g", "24 oy", "zaytun-konserva.jpg", P.konserva, "Ispaniya bog'larida yetishtirilgan yirik zaytun mevalari."],
+            ["Baqlajonli sabzavot ikrasi", "Konserva", 14500, "450 g", "18 oy", "baqlajon-ikra.jpg", P.konserva, "Issiq non bilan yeyish uchun mazali sabzavotli ikra."],
+
+            // 10. Dukkakli va yormalar (10 ta)
+            ["Xorazm / Lazgi oliy navli osh guruchi", "Dukkakli va yormalar", 24000, "1 kg", "12 oy", "lazgi-guruch.jpg", P.guruch, "Suv ko'taradigan va dona-dona bo'lib pishadigan toza guruch."],
+            ["Farg'ona haqiqiy Devzira guruchi", "Dukkakli va yormalar", 35000, "1 kg", "12 oy", "devzira-guruch.jpg", P.guruch, "Choyxona palovi uchun saralangan toza Devzira guruchi."],
+            ["Oliy navli Grechka (Marjumak) yormasi", "Dukkakli va yormalar", 14000, "1 kg", "12 oy", "grechka.jpg", P.loviya, "Temir moddasiga boy, tozalangan va tez pishuvchi grechka."],
+            ["Osh va sho'rva uchun yirik oq No'xat", "Dukkakli va yormalar", 22000, "1 kg", "12 oy", "oq-noxat.jpg", P.loviya, "Yumshoq bo'lib pishadigan saralangan yirik osh no'xati."],
+            ["Qizil va oq Loviya donalari", "Dukkakli va yormalar", 21000, "1 kg", "12 oy", "loviya.jpg", P.loviya, "Sho'rva va salatlar uchun oqsilga boy toza loviya."],
+            ["Tozalangan yashil Mosh", "Dukkakli va yormalar", 17000, "1 kg", "12 oy", "mosh.jpg", P.loviya, "Moshxo'rda va moshkichiri uchun toshsiz toza mosh."],
+            ["Qizil Yasmiq (Chechevitsa)", "Dukkakli va yormalar", 23000, "1 kg", "12 oy", "yasmiq.jpg", P.loviya, "Turkcha Ezo-gelin sho'rvasi uchun 15 daqiqada pishuvchi yasmiq."],
+            ["Nonushta uchun Suli yormasi (Gerkules)", "Dukkakli va yormalar", 12000, "500 g", "12 oy", "gerkules.jpg", P.guruch, "Sutda 5 daqiqada tayyor bo'ladigan foydali bo'tqa yormasi."],
+            ["Mannaya krupa ( Irmik yormasi)", "Dukkakli va yormalar", 9500, "800 g", "12 oy", "mannaya.jpg", P.un, "Bolalar bo'tqasi va shirin mannik pirogi uchun yorma."],
+            ["Italiya qattiq bug'doy makaronlari (Spagetti)", "Dukkakli va yormalar", 13500, "500 g", "24 oy", "makaron-spagetti.jpg", P.makaron, "Ezilib ketmaydigan oliy navli qattiq bug'doy makaroni."]
+        ];
+
+        // Boshqa 6 ta asosiy kategoriya uchun 12 ta mashhur mahsulot
+        const nonFoodCatalog = [
+            {
+                id: 1,
+                name: "Noutbuk Apple MacBook Air 13 M2, 8GB RAM, 256GB SSD",
+                category: "Elektronika",
+                subCategory: "",
+                costPrice: 11200000,
+                oldPrice: 14500000,
+                price: 12900000,
+                unit: "1 dona",
+                shelfLife: "Kafolat 1 yil",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 215,
+                img: "images/umumiy/macbook-m2.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+                desc: "Yuqori unumdorlikka ega Apple M2 protsessori va 18 soat ishlovchi batareya."
+            },
+            {
+                id: 2,
+                name: "Smartfon Apple iPhone 15 Pro Max, 256 GB, Titanium",
+                category: "Elektronika",
+                subCategory: "",
+                costPrice: 13800000,
+                oldPrice: 17000000,
+                price: 15490000,
+                unit: "1 dona",
+                shelfLife: "Kafolat 1 yil",
+                fastDelivery: true,
+                inStock: true,
+                rating: 5.0,
+                reviews: 412,
+                img: "images/umumiy/iphone-15-pro.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+                desc: "Titan korpus, A17 Pro chip va 48 MP professional kamera tizimi."
+            },
+            {
+                id: 3,
+                name: "Simsiz quloqchinlar AirPods Pro 2-avlod (USB-C)",
+                category: "Elektronika",
+                subCategory: "",
+                costPrice: 2100000,
+                oldPrice: 3100000,
+                price: 2650000,
+                unit: "1 juft",
+                shelfLife: "Kafolat 1 yil",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 189,
+                img: "images/umumiy/airpods-pro.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=600&q=80",
+                desc: "Faol shovqinni so'ndirish funksiyasiga ega original simsiz quloqchinlar."
+            },
+            {
+                id: 4,
+                name: "Erkaklar klassik Oversize 100% paxtali futbolkasi",
+                category: "Kiyim",
+                subCategory: "",
+                costPrice: 55000,
+                oldPrice: 145000,
+                price: 99000,
+                unit: "1 dona",
+                shelfLife: "Cheklanmagan",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.8,
+                reviews: 94,
+                img: "images/umumiy/futbolka-qora.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+                desc: "Yumshoq o'zbek paxtasidan tikilgan sifatli kundalik futbolka."
+            },
+            {
+                id: 5,
+                name: "Sport krossovkasi Nike Air Zoom yugurish uchun",
+                category: "Kiyim",
+                subCategory: "",
+                costPrice: 380000,
+                oldPrice: 720000,
+                price: 540000,
+                unit: "1 juft",
+                shelfLife: "Cheklanmagan",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 143,
+                img: "images/umumiy/krossovka-nike.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+                desc: "Havo o'tkazuvchi va oyoqni charchatmaydigan zamonaviy krossovka."
+            },
+            {
+                id: 6,
+                name: "Qahva mashinasi DeLonghi Espresso Cappuccino",
+                category: "Uy-ro'zg'or",
+                subCategory: "",
+                costPrice: 1650000,
+                oldPrice: 2500000,
+                price: 2150000,
+                unit: "1 dona",
+                shelfLife: "Kafolat 2 yil",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 64,
+                img: "images/umumiy/qahva-mashina.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=600&q=80",
+                desc: "Uyda mazali Cappuccino va Espresso tayyorlash uchun apparat."
+            },
+            {
+                id: 7,
+                name: "Aqlli Robot-changyutgich nam va quruq tozalash",
+                category: "Uy-ro'zg'or",
+                subCategory: "",
+                costPrice: 1950000,
+                oldPrice: 3100000,
+                price: 2590000,
+                unit: "1 dona",
+                shelfLife: "Kafolat 1 yil",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.8,
+                reviews: 98,
+                img: "images/umumiy/robot-changyutgich.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1589894404892-7310b92ea7a2?auto=format&fit=crop&w=600&q=80",
+                desc: "Lazer navigatsiyali uyni mustaqil tozalovchi aqlli robot."
+            },
+            {
+                id: 8,
+                name: "Fransuz parfyumi Dior Sauvage / Bleu uslubida, 100 ml",
+                category: "Go'zallik",
+                subCategory: "",
+                costPrice: 420000,
+                oldPrice: 850000,
+                price: 680000,
+                unit: "100 ml",
+                shelfLife: "36 oy",
+                fastDelivery: true,
+                inStock: true,
+                rating: 5.0,
+                reviews: 178,
+                img: "images/umumiy/atir-sauvage.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80",
+                desc: "Uzoq saqlanib turuvchi betakror iforga ega original parfyum."
+            },
+            {
+                id: 9,
+                name: "Yuz terisini namlantiruvchi vitaminli krem va serum",
+                category: "Go'zallik",
+                subCategory: "",
+                costPrice: 110000,
+                oldPrice: 230000,
+                price: 175000,
+                unit: "50 ml",
+                shelfLife: "24 oy",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 318,
+                img: "images/umumiy/yuz-kremi.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
+                desc: "Gialuron kislotasi bilan boyitilgan koreys parvarish vositasi."
+            },
+            {
+                id: 10,
+                name: "Bolalar uchun katta yumshoq o'yinchoq Teddy Ayiqcha",
+                category: "Bolalar",
+                subCategory: "",
+                costPrice: 120000,
+                oldPrice: 270000,
+                price: 199000,
+                unit: "100 sm",
+                shelfLife: "Cheklanmagan",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.9,
+                reviews: 129,
+                img: "images/umumiy/teddy-ayiqcha.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+                desc: "Yumshoq gipoallergen paxmoqdan tikilgan sovg'abop ayiqcha."
+            },
+            {
+                id: 11,
+                name: "Bolalar uchun aql charxlovchi konstruktor to'plami",
+                category: "Bolalar",
+                subCategory: "",
+                costPrice: 150000,
+                oldPrice: 310000,
+                price: 235000,
+                unit: "500 qism",
+                shelfLife: "Cheklanmagan",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.8,
+                reviews: 67,
+                img: "images/umumiy/lego-konstruktor.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=80",
+                desc: "Bolaning ijodiy fikrlashini rivojlantiruvchi rang-barang konstruktor."
+            },
+            {
+                id: 12,
+                name: "Sport gantellari to'plami 2x10 kg, rezina qoplamali",
+                category: "Sport",
+                subCategory: "",
+                costPrice: 230000,
+                oldPrice: 450000,
+                price: 340000,
+                unit: "20 kg",
+                shelfLife: "Cheklanmagan",
+                fastDelivery: true,
+                inStock: true,
+                rating: 4.8,
+                reviews: 52,
+                img: "images/umumiy/gantel-20kg.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80",
+                desc: "Uyda va zalda mashq qilish uchun qulay rezinali gantellar."
+            }
+        ];
+
+        // 100 ta oziq-ovqat ob'ektlarini shakllantirish (ID: 101 dan 200 gacha)
+        const foodCatalogObjects = rawFoodCatalog.map((item, idx) => {
+            const [name, subCategory, price, unit, shelfLife, fileSlug, fallbackImg, desc] = item;
+            return {
+                id: 101 + idx,
+                name: name,
+                category: "Oziq-ovqat",
+                subCategory: subCategory,
+                costPrice: Math.round(price * 0.72),
+                oldPrice: Math.round(price * 1.25),
+                price: price,
+                unit: unit,
+                shelfLife: shelfLife,
+                fastDelivery: true,
+                inStock: true,
+                rating: Number((4.7 + (idx % 4) * 0.1).toFixed(1)),
+                reviews: 25 + (idx * 7) % 190,
+                img: `images/oziq-ovqat/${fileSlug}`,
+                fallbackImg: fallbackImg,
+                desc: desc
+            };
+        });
+
+        const INITIAL_PRODUCTS = [...nonFoodCatalog, ...foodCatalogObjects];
+
+        // 4. LOCALSTORAGE STATE SINXRONIZATSIYASI
+        let categories = JSON.parse(localStorage.getItem('bek_v3_categories')) || DEFAULT_CATEGORIES;
+        let products = JSON.parse(localStorage.getItem('bek_v3_products'));
+        if (!products || products.length < 100) {
+            products = INITIAL_PRODUCTS;
+            localStorage.setItem('bek_v3_products', JSON.stringify(products));
+        }
+        let cart = JSON.parse(localStorage.getItem('bek_v3_cart')) || [];
+        let favorites = JSON.parse(localStorage.getItem('bek_v3_favorites')) || [];
+        let orders = JSON.parse(localStorage.getItem('bek_v3_orders')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('bek_v3_user')) || null;
+        let chatMessages = JSON.parse(localStorage.getItem('bek_v3_chat')) || [
+            { sender: 'admin', text: "Assalomu alaykum! BEK MARKET va 100 xil Oziq-ovqat bo'limiga xush kelibsiz! Savolingiz bo'lsa yozing.", time: "Hozirgina" }
+        ];
+
+        let selectedMainCat = "Barchasi";
+        let selectedFoodSubcat = "Barchasi";
+        let uploadedBase64Image = "";
+
+        const saveAllToStorage = () => {
+            localStorage.setItem('bek_v3_categories', JSON.stringify(categories));
+            localStorage.setItem('bek_v3_products', JSON.stringify(products));
+            localStorage.setItem('bek_v3_cart', JSON.stringify(cart));
+            localStorage.setItem('bek_v3_favorites', JSON.stringify(favorites));
+            localStorage.setItem('bek_v3_orders', JSON.stringify(orders));
+            localStorage.setItem('bek_v3_user', JSON.stringify(currentUser));
+            localStorage.setItem('bek_v3_chat', JSON.stringify(chatMessages));
+        };
+
+        // 5. FORMATLASH VA TOAST XABARNOMALAR
+        const formatPrice = (num) => Number(num || 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so'm";
+        const formatInstallment = (num) => Math.round((num || 0) / 12).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so'm/oyiga";
+
+        const showToast = (msg, type = 'success') => {
+            const container = document.getElementById('toastContainer');
+            const el = document.createElement('div');
+            const bg = type === 'success' ? 'bg-slate-900 border-l-4 border-emerald-400' : 'bg-rose-600';
+            el.className = `${bg} text-white px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-bold flex items-center gap-2.5 transition-all duration-300`;
+            el.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-triangle-exclamation'}"></i><span>${msg}</span>`;
+            container.appendChild(el);
+            setTimeout(() => {
+                el.style.opacity = '0';
+                setTimeout(() => el.remove(), 300);
+            }, 3000);
+        };
+
+        // 6. KATEGORIYA MENYULARI VA OZIQ-OVQAT ICHKI TOIFALARINI CHIZISH
+        const renderNavigationCategories = () => {
+            const tabsEl = document.getElementById('mainCategoryTabs');
+            const drawerEl = document.getElementById('catalogDrawerGrid');
+
+            const allCats = ["Barchasi", ...categories];
+
+            tabsEl.innerHTML = allCats.map(cat => {
+                const isActive = selectedMainCat === cat;
+                const isFood = cat === "Oziq-ovqat";
+                if (isFood) {
+                    return `
+                        <li>
+                            <button onclick="selectMainCategory('Oziq-ovqat')" class="px-3.5 py-1.5 rounded-full font-extrabold text-xs sm:text-sm flex items-center gap-1.5 transition shadow-sm ${
+                                isActive ? 'bg-emerald-600 text-white ring-2 ring-emerald-300' : 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                            }">
+                                <span>🥗 Oziq-ovqat (100)</span>
+                                <span class="bg-amber-300 text-slate-900 text-[10px] px-1.5 py-0.2 rounded-full font-black">YANGI</span>
+                            </button>
+                        </li>
+                    `;
+                }
+                return `
+                    <li>
+                        <button onclick="selectMainCategory('${cat.replace(/'/g, "\\'")}')" class="pb-1 px-1.5 transition ${
+                            isActive ? 'text-bek font-black border-b-2 border-bek' : 'hover:text-bek'
+                        }">
+                            ${cat}
+                        </button>
+                    </li>
+                `;
+            }).join('');
+
+            drawerEl.innerHTML = categories.map(cat => `
+                <button onclick="selectMainCategory('${cat.replace(/'/g, "\\'")}'); toggleCatalogMenu();" class="p-3 rounded-xl border border-gray-100 hover:border-bek hover:bg-bek/5 text-left font-bold text-xs sm:text-sm flex items-center justify-between transition">
+                    <span>${cat === 'Oziq-ovqat' ? '🥗 ' + cat : cat}</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                </button>
+            `).join('');
+
+            // Oziq-ovqat 10 ta ichki toifalari
+            const subPills = document.getElementById('foodSubcategoryPills');
+            subPills.innerHTML = FOOD_SUBCATEGORIES.map(sub => {
+                const active = selectedFoodSubcat === sub;
+                return `
+                    <button onclick="selectFoodSubcategory('${sub.replace(/'/g, "\\'")}')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap transition ${
+                        active
+                            ? 'bg-white text-emerald-700 shadow-md scale-[1.02]'
+                            : 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
+                    }">
+                        ${sub}
+                    </button>
+                `;
+            }).join('');
+        };
+
+        const selectMainCategory = (cat) => {
+            selectedMainCat = cat;
+            selectedFoodSubcat = "Barchasi";
+            renderNavigationCategories();
+            renderStorefront();
+        };
+
+        const selectFoodSubcategory = (sub) => {
+            selectedFoodSubcat = sub;
+            renderNavigationCategories();
+            renderStorefront();
+        };
+
+        const toggleCatalogMenu = () => {
+            document.getElementById('catalogDropdown').classList.toggle('hidden');
+        };
+
+        // 7. MAHSULOT KARTOCHKASI HTML GENERATORI (LAZY LOADING VA ONERROR FALLBACK BILAN)
+        const buildProductCardHTML = (p) => {
+            const isFav = favorites.includes(p.id);
+            const discountPercent = p.oldPrice > p.price ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+            const isFood = p.category === "Oziq-ovqat";
+            const safeFallback = p.fallbackImg || "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80";
+
+            return `
+                <div onclick="openProductDetailModal(${p.id})" class="product-card bg-white rounded-2xl p-3 flex flex-col relative border border-gray-100 cursor-pointer group">
+                    <!-- Yuqori chap nishonlar -->
+                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-1">
+                        ${!p.inStock
+                            ? `<span class="bg-slate-900 text-white text-[10px] font-black px-2 py-0.5 rounded-lg uppercase">Tugagan</span>`
+                            : (discountPercent > 0 ? `<span class="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded-lg w-fit">-${discountPercent}%</span>` : '')
+                        }
+                        ${isFood && p.fastDelivery ? `<span class="bg-emerald-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-lg shadow-sm flex items-center gap-1 w-fit"><i class="fa-solid fa-bolt text-amber-300"></i> Tez yetkazish</span>` : ''}
+                    </div>
+
+                    <!-- Sevimli tugmasi -->
+                    <button onclick="toggleFavoriteItem(${p.id}, event)" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/90 hover:bg-white shadow flex items-center justify-center transition ${isFav ? 'text-pink-600' : 'text-gray-400 hover:text-pink-500'}">
+                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                    </button>
+
+                    <!-- Rasm (lazy loading + avtomatik zaxira rasm) -->
+                    <div class="w-full h-40 sm:h-44 rounded-xl overflow-hidden bg-gray-100 mb-2.5 relative">
+                        <img
+                            src="${p.img}"
+                            loading="lazy"
+                            alt="${p.name}"
+                            onerror="this.onerror=null; this.src='${safeFallback}';"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ${!p.inStock ? 'grayscale opacity-60' : ''}"
+                        >
+                        ${p.unit ? `<span class="absolute bottom-2 right-2 bg-slate-900/75 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md">${p.unit}</span>` : ''}
+                    </div>
+
+                    <!-- Toifa va Yaroqlilik muddati -->
+                    <div class="flex items-center justify-between text-[10px] text-gray-400 font-semibold mb-1">
+                        <span class="truncate">${isFood ? p.subCategory : p.category}</span>
+                        ${p.shelfLife ? `<span class="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded shrink-0">⏳ ${p.shelfLife}</span>` : ''}
+                    </div>
+
+                    <!-- Nomi -->
+                    <h3 class="text-xs sm:text-sm font-bold text-gray-800 line-clamp-2 mb-1.5 leading-snug">${p.name}</h3>
+
+                    <!-- Reyting -->
+                    <div class="flex items-center gap-1 text-xs text-gray-500 mb-2">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span class="font-bold text-gray-700">${p.rating}</span>
+                        <span>(${p.reviews} sharh)</span>
+                    </div>
+
+                    <!-- Narx va Savatga tugmasi -->
+                    <div class="mt-auto pt-1 flex items-end justify-between gap-2">
+                        <div>
+                            ${p.oldPrice > p.price ? `<div class="text-[11px] text-gray-400 line-through">${formatPrice(p.oldPrice)}</div>` : ''}
+                            <div class="text-sm sm:text-base font-black text-gray-900">${formatPrice(p.price)}</div>
+                            <div class="text-[10px] text-gray-500 font-semibold">Birligi: <b class="text-gray-700">${p.unit || '1 dona'}</b></div>
+                        </div>
+
+                        <button
+                            onclick="addItemToCart(${p.id}, event)"
+                            ${!p.inStock ? 'disabled' : ''}
+                            class="w-10 h-10 rounded-full flex items-center justify-center border transition shrink-0 ${
+                                p.inStock
+                                    ? (isFood ? 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white' : 'border-gray-200 hover:bg-bek hover:text-white text-gray-800')
+                                    : 'bg-gray-100 text-gray-300 cursor-not-allowed'
+                            }"
+                            title="Savatga qo'shish"
+                        >
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        };
+
+        // 8. DO'KON SAHIFASINI FILTRLASH VA CHIZISH
+        const renderStorefront = () => {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const minPrice = Number(document.getElementById('filterMinPrice').value) || 0;
+            const maxPrice = Number(document.getElementById('filterMaxPrice').value) || Infinity;
+            const minRating = Number(document.getElementById('filterRating').value) || 0;
+            const sortBy = document.getElementById('sortSelect').value;
+            const onlyDiscount = document.getElementById('filterOnlyDiscount').checked;
+
+            // Oziq-ovqat maxsus headerini ko'rsatish yoki yashirish
+            const foodHeader = document.getElementById('foodSpecialHeader');
+            const discountSec = document.getElementById('discountSection');
+
+            if (selectedMainCat === "Oziq-ovqat") {
+                foodHeader.classList.remove('hidden');
+                discountSec.classList.add('hidden');
+            } else {
+                foodHeader.classList.add('hidden');
+                discountSec.classList.toggle('hidden', selectedMainCat !== "Barchasi" || query.length > 0);
+            }
+
+            // Chegirmalar bo'limi
+            const topDiscounts = [...products]
+                .filter(p => p.oldPrice > p.price && p.inStock)
+                .sort((a, b) => ((b.oldPrice - b.price) / b.oldPrice) - ((a.oldPrice - a.price) / a.oldPrice))
+                .slice(0, 5);
+            document.getElementById('discountGrid').innerHTML = topDiscounts.map(buildProductCardHTML).join('');
+
+            // Asosiy filtrlash
+            let list = [...products];
+
+            if (selectedMainCat !== "Barchasi") {
+                list = list.filter(p => p.category === selectedMainCat);
+            }
+            if (selectedMainCat === "Oziq-ovqat" && selectedFoodSubcat !== "Barchasi") {
+                list = list.filter(p => p.subCategory === selectedFoodSubcat);
+            }
+            if (query) {
+                list = list.filter(p =>
+                    p.name.toLowerCase().includes(query) ||
+                    p.category.toLowerCase().includes(query) ||
+                    (p.subCategory && p.subCategory.toLowerCase().includes(query)) ||
+                    (p.desc && p.desc.toLowerCase().includes(query))
+                );
+            }
+
+            list = list.filter(p => p.price >= minPrice && p.price <= maxPrice && p.rating >= minRating);
+            if (onlyDiscount) {
+                list = list.filter(p => p.oldPrice > p.price);
+            }
+
+            // Saralash
+            if (sortBy === 'cheap') list.sort((a, b) => a.price - b.price);
+            if (sortBy === 'expensive') list.sort((a, b) => b.price - a.price);
+            if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating);
+            if (sortBy === 'new') list.sort((a, b) => b.id - a.id);
+
+            // Sarlavhalarni yangilash
+            const titleEl = document.getElementById('mainSectionTitle');
+            const subEl = document.getElementById('mainSectionSubtitle');
+            if (selectedMainCat === "Oziq-ovqat") {
+                titleEl.innerText = selectedFoodSubcat === "Barchasi" ? "🥗 Barcha Oziq-ovqat mahsulotlari" : `🥗 ${selectedFoodSubcat}`;
+                subEl.innerText = "Yangi, yaroqlilik muddati kafolatlangan va tez yetkaziladigan mahsulotlar";
+            } else {
+                titleEl.innerText = selectedMainCat === "Barchasi" ? "Mashhur mahsulotlar" : `${selectedMainCat} bo'limi`;
+                subEl.innerText = "Sifat kafolati bilan eng hamyonbop narxlarda";
+            }
+
+            document.getElementById('foundProductsCounter').innerText = `${list.length} ta mahsulot`;
+
+            const grid = document.getElementById('productsGrid');
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white rounded-2xl p-12 text-center border border-gray-200">
+                        <i class="fa-solid fa-magnifying-glass-minus text-4xl text-gray-300 mb-3"></i>
+                        <h3 class="text-base font-black text-gray-800">Hech narsa topilmadi</h3>
+                        <p class="text-xs text-gray-500 mt-1">Qidiruv so'zini yoki narx filtrlarini o'zgartirib ko'ring.</p>
+                        <button onclick="resetAllFilters()" class="mt-4 bg-bek text-white text-xs font-bold px-5 py-2.5 rounded-xl">Filtrlarni tozalash</button>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = list.map(buildProductCardHTML).join('');
+            }
+
+            updateBadges();
+        };
+
+        const handleSearchInput = () => {
+            const val = document.getElementById('searchInput').value;
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', val.length === 0);
+            renderStorefront();
+        };
+
+        const clearSearch = () => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderStorefront();
+        };
+
+        const resetAllFilters = () => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            document.getElementById('filterMinPrice').value = '';
+            document.getElementById('filterMaxPrice').value = '';
+            document.getElementById('filterRating').value = '0';
+            document.getElementById('sortSelect').value = 'default';
+            document.getElementById('filterOnlyDiscount').checked = false;
+            selectedMainCat = "Barchasi";
+            selectedFoodSubcat = "Barchasi";
+            renderNavigationCategories();
+            renderStorefront();
+        };
+
+        // 9. SAVAT VA BUYURTMA FUNKSIYALARI (+998 VALIDATSIYASI BILAN)
+        const addItemToCart = (id, event) => {
+            if (event) event.stopPropagation();
+            const p = products.find(item => item.id === id);
+            if (!p || !p.inStock) {
+                showToast("Bu mahsulot omborda tugagan!", "error");
+                return;
+            }
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id: p.id, qty: 1 });
+            }
+            saveAllToStorage();
+            updateBadges();
+            showToast(`"${p.name}" savatga qo'shildi!`);
+        };
+
+        const updateCartQty = (id, delta) => {
+            const item = cart.find(c => c.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(c => c.id !== id);
+            }
+            saveAllToStorage();
+            renderCartModalContent();
+            updateBadges();
+        };
+
+        const removeCartItem = (id) => {
+            cart = cart.filter(c => c.id !== id);
+            saveAllToStorage();
+            renderCartModalContent();
+            updateBadges();
+        };
+
+        const clearCartAll = () => {
+            cart = [];
+            saveAllToStorage();
+            renderCartModalContent();
+            updateBadges();
+        };
+
+        const openCartModal = () => {
+            if (currentUser) {
+                document.getElementById('chkName').value = currentUser.name || '';
+                document.getElementById('chkPhone').value = currentUser.phone || '+998 ';
+            }
+            renderCartModalContent();
+            const m = document.getElementById('cartModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        };
+
+        const closeCartModal = () => {
+            const m = document.getElementById('cartModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        };
+
+        const renderCartModalContent = () => {
+            const container = document.getElementById('cartItemsContainer');
+            let totalSum = 0;
+            let totalCount = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-gray-50 rounded-2xl p-10 text-center border border-dashed border-gray-300 my-auto">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-gray-300 mb-2"></i>
+                        <h4 class="font-black text-gray-700 text-sm">Savatingiz hozircha bo'sh</h4>
+                        <p class="text-xs text-gray-400 mt-1">Do'kondan yoqqan mahsulotlarni savatga qo'shing</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(c => {
+                    const p = products.find(prod => prod.id === c.id);
+                    if (!p) return '';
+                    const sub = p.price * c.qty;
+                    totalSum += sub;
+                    totalCount += c.qty;
+                    return `
+                        <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white">
+                            <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallbackImg}';" class="w-16 h-16 rounded-lg object-cover shrink-0 bg-gray-100">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-xs sm:text-sm font-bold text-gray-800 truncate">${p.name}</h4>
+                                <div class="text-[11px] text-gray-400">${p.unit || '1 dona'}</div>
+                                <div class="text-xs font-black text-bek mt-0.5">${formatPrice(p.price)}</div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="updateCartQty(${p.id}, -1)" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 font-bold">-</button>
+                                <span class="text-xs font-black w-5 text-center">${c.qty}</span>
+                                <button onclick="updateCartQty(${p.id}, 1)" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 font-bold">+</button>
+                            </div>
+                            <button onclick="removeCartItem(${p.id})" class="text-gray-400 hover:text-rose-600 px-1.5">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            document.getElementById('chkTotalQty').innerText = `${totalCount} dona`;
+            document.getElementById('chkTotalPrice').innerText = formatPrice(totalSum);
+        };
+
+        const submitCustomerOrder = (e) => {
+            e.preventDefault();
+            if (cart.length === 0) {
+                showToast("Avval savatga mahsulot qo'shing!", "error");
+                return;
+            }
+
+            const name = document.getElementById('chkName').value.trim();
+            const phone = document.getElementById('chkPhone').value.trim();
+            const address = document.getElementById('chkAddress').value.trim();
+            const payment = document.querySelector('input[name="paymentType"]:checked').value;
+
+            // Telefon raqam tekshiruvi (+998 va kamida 9 ta raqam)
+            const digitsOnly = phone.replace(/\D/g, '');
+            if (!phone.startsWith('+998') || digitsOnly.length < 12) {
+                showToast("Telefon raqamni +998 XX XXX XX XX formatida to'liq kiriting!", "error");
+                return;
+            }
+
+            const items = cart.map(c => {
+                const p = products.find(prod => prod.id === c.id);
+                return {
+                    id: c.id,
+                    name: p ? p.name : 'Mahsulot',
+                    unit: p ? p.unit : '1 dona',
+                    qty: c.qty,
+                    price: p ? p.price : 0
+                };
+            });
+
+            const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+
+            const orderObj = {
+                id: Math.floor(100000 + Math.random() * 900000),
+                customerName: name,
+                customerPhone: phone,
+                address: address,
+                paymentType: payment,
+                items: items,
+                total: total,
+                status: "Yangi",
+                date: new Date().toLocaleString('uz-UZ')
+            };
+
+            orders.unshift(orderObj);
+            cart = [];
+            saveAllToStorage();
+            renderCartModalContent();
+            updateBadges();
+            closeCartModal();
+            showToast(`Buyurtma #${orderObj.id} (${payment}) qabul qilindi!`);
+        };
+
+        // 10. MAHSULOT BATAFSIL VA SEVIMLILAR MODALLARI
+        const openProductDetailModal = (id) => {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            const body = document.getElementById('productDetailBody');
+            body.innerHTML = `
+                <div class="rounded-2xl overflow-hidden bg-gray-100 h-64 sm:h-80">
+                    <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallbackImg}';" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <div class="flex flex-wrap items-center gap-1.5 mb-2">
+                        <span class="text-xs font-extrabold text-bek bg-bek/10 px-2.5 py-1 rounded-md">${p.category}</span>
+                        ${p.subCategory ? `<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">${p.subCategory}</span>` : ''}
+                        ${p.fastDelivery ? `<span class="text-xs font-bold text-amber-800 bg-amber-100 px-2 py-1 rounded-md">⚡ Tez yetkazish</span>` : ''}
+                    </div>
+                    <h3 class="text-lg font-black text-gray-900 mb-2">${p.name}</h3>
+                    <div class="text-xs text-gray-500 space-y-1 mb-3">
+                        <div>⭐ Reyting: <b>${p.rating}</b> (${p.reviews} ta sharh)</div>
+                        <div>⚖️ Og'irligi / Birligi: <b>${p.unit || '1 dona'}</b></div>
+                        <div>⏳ Yaroqlilik muddati: <b>${p.shelfLife || 'Kafolatlangan'}</b></div>
+                        <div>📦 Rasm manzili: <code class="text-[11px] bg-gray-100 px-1.5 py-0.5 rounded">${p.img}</code></div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 mb-4 leading-relaxed">${p.desc}</p>
+                    <div class="bg-gray-50 p-3.5 rounded-xl border border-gray-200 mb-4">
+                        ${p.oldPrice > p.price ? `<div class="text-xs text-gray-400 line-through">${formatPrice(p.oldPrice)}</div>` : ''}
+                        <div class="text-2xl font-black text-gray-900">${formatPrice(p.price)}</div>
+                        <div class="text-xs text-bek font-bold mt-0.5">Bo'lib to'lash: ${formatInstallment(p.price)}</div>
+                    </div>
+                    <button onclick="addItemToCart(${p.id}); closeProductDetailModal();" ${!p.inStock ? 'disabled' : ''} class="w-full py-3 rounded-xl font-black text-sm text-white ${p.inStock ? 'bg-bek hover:bg-bek-dark' : 'bg-gray-400'} transition">
+                        ${p.inStock ? 'Savatga qo\'shish' : 'Omborda qolmagan'}
+                    </button>
+                </div>
+            `;
+            const m = document.getElementById('productDetailModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        };
+
+        const closeProductDetailModal = () => {
+            const m = document.getElementById('productDetailModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        };
+
+        const toggleFavoriteItem = (id, event) => {
+            if (event) event.stopPropagation();
+            if (favorites.includes(id)) {
+                favorites = favorites.filter(f => f !== id);
+                showToast("Saralanganlardan o'chirildi");
+            } else {
+                favorites.push(id);
+                showToast("Saralanganlarga qo'shildi ❤️");
+            }
+            saveAllToStorage();
+            renderStorefront();
+        };
+
+        const openFavoritesModal = () => {
+            const body = document.getElementById('favoritesListBody');
+            const favItems = products.filter(p => favorites.includes(p.id));
+            if (favItems.length === 0) {
+                body.innerHTML = `<div class="col-span-full text-center py-8 text-gray-400 text-sm">Saralangan mahsulotlar yo'q</div>`;
+            } else {
+                body.innerHTML = favItems.map(p => `
+                    <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200">
+                        <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallbackImg}';" class="w-16 h-16 rounded-lg object-cover">
+                        <div class="flex-1 min-w-0">
+                            <div class="text-xs font-bold text-gray-800 truncate">${p.name}</div>
+                            <div class="text-xs font-black text-bek mt-1">${formatPrice(p.price)}</div>
+                        </div>
+                        <button onclick="addItemToCart(${p.id}); closeFavoritesModal();" class="bg-bek text-white text-xs font-bold px-3 py-2 rounded-lg">Savatga</button>
+                    </div>
+                `).join('');
+            }
+            const m = document.getElementById('favoritesModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        };
+
+        const closeFavoritesModal = () => {
+            const m = document.getElementById('favoritesModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        };
+
+        // 11. OLMA 3D KIRISH VA ALOHIDA ADMIN SAHIFASINI OCHISH
+        const openAuthModal = () => {
+            const m = document.getElementById('authModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        };
+
+        const closeAuthModal = () => {
+            const m = document.getElementById('authModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        };
+
+        const flipAppleCard = () => {
+            document.getElementById('appleCard3D').classList.toggle('flipped');
+        };
+
+        const handleCustomerAuth = (e) => {
+            e.preventDefault();
+            const name = document.getElementById('custAuthName').value.trim();
+            const phone = document.getElementById('custAuthPhone').value.trim();
+            currentUser = { name, phone };
+            saveAllToStorage();
+            updateBadges();
+            closeAuthModal();
+            showToast(`Xush kelibsiz, ${name}!`);
+        };
+
+        const handleAdminLogin = (e) => {
+            e.preventDefault();
+            const u = document.getElementById('admLoginUser').value.trim();
+            const p = document.getElementById('admLoginPass').value.trim();
+            if (u === ADMIN_CREDENTIALS.login && p === ADMIN_CREDENTIALS.pass) {
+                closeAuthModal();
+                openSeparateAdminView();
+                showToast("Alohida Admin Panel sahifasiga xush kelibsiz!");
+            } else {
+                showToast("Login yoki parol xato! (admin / 1234)", "error");
+            }
+        };
+
+        // Alohida Admin ko'rinishiga o'tish (Mijoz sahifasi yopiladi, Admin sahifasi ochiladi)
+        const openSeparateAdminView = () => {
+            document.getElementById('storefrontView').classList.add('hidden');
+            const adm = document.getElementById('adminSeparateView');
+            adm.classList.remove('hidden');
+            adm.classList.add('flex');
+            window.location.hash = 'admin';
+            initAdminViewData();
+        };
+
+        const exitAdminToStorefront = () => {
+            document.getElementById('adminSeparateView').classList.add('hidden');
+            document.getElementById('adminSeparateView').classList.remove('flex');
+            document.getElementById('storefrontView').classList.remove('hidden');
+            window.location.hash = '';
+            renderNavigationCategories();
+            renderStorefront();
+        };
+
+        // 12. ADMIN PANEL FUNKSIYALARI
+        const switchAdminSection = (sec) => {
+            ['dashboard', 'orders', 'categories', 'chat'].forEach(s => {
+                const cap = s.charAt(0).toUpperCase() + s.slice(1);
+                document.getElementById('admSec' + cap).classList.toggle('hidden', s !== sec);
+                document.getElementById('admBtn' + cap).className = s === sec
+                    ? "px-3.5 py-2 rounded-xl text-xs font-bold bg-bek text-white transition"
+                    : "px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 transition";
+            });
+            initAdminViewData();
+        };
+
+        const initAdminViewData = () => {
+            // Statistika
+            const totalRevenue = orders
+                .filter(o => o.status !== 'Bekor qilindi')
+                .reduce((s, o) => s + o.total, 0);
+
+            document.getElementById('admStatProducts').innerText = `${products.length} ta`;
+            document.getElementById('admStatOrders').innerText = `${orders.length} ta`;
+            document.getElementById('admOrdersCount').innerText = orders.length;
+            document.getElementById('admStatRevenue').innerText = formatPrice(totalRevenue);
+            document.getElementById('admStatInStock').innerText = `${products.filter(p => p.inStock).length} ta`;
+
+            // Kategoriya selectlari
+            const catSel = document.getElementById('admProdCategory');
+            catSel.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+
+            const subSel = document.getElementById('admProdSubcat');
+            subSel.innerHTML = FOOD_SUBCATEGORIES.filter(s => s !== 'Barchasi').map(s => `<option value="${s}">${s}</option>`).join('');
+
+            const filterCat = document.getElementById('admFilterCat');
+            const currentFilterVal = filterCat.value || 'Barchasi';
+            filterCat.innerHTML = `<option value="Barchasi">Barcha kategoriyalar</option>` + categories.map(c => `<option value="${c}">${c}</option>`).join('');
+            filterCat.value = currentFilterVal;
+
+            renderAdminProductsTable();
+            renderAdminOrdersList();
+            renderAdminCategoriesList();
+            renderChatBoxes();
+        };
+
+        const toggleAdminSubcatSelect = () => {
+            const cat = document.getElementById('admProdCategory').value;
+            document.getElementById('admSubcatWrapper').classList.toggle(' opacity-40', cat !== 'Oziq-ovqat');
+        };
+
+        const previewAdminUploadedImage = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedBase64Image = e.target.result;
+                document.getElementById('admImgPreview').src = uploadedBase64Image;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        const updateAdminUrlPreview = (url) => {
+            if (url.trim()) {
+                document.getElementById('admImgPreview').src = url.trim();
+            }
+        };
+
+        const saveAdminProduct = (e) => {
+            e.preventDefault();
+            const editId = Number(document.getElementById('admEditProductId').value);
+            const name = document.getElementById('admProdName').value.trim();
+            const category = document.getElementById('admProdCategory').value;
+            const subCategory = category === 'Oziq-ovqat' ? document.getElementById('admProdSubcat').value : '';
+            const costPrice = Number(document.getElementById('admProdCost').value);
+            const price = Number(document.getElementById('admProdPrice').value);
+            const oldPrice = Number(document.getElementById('admProdOldPrice').value) || Math.round(price * 1.2);
+            const unit = document.getElementById('admProdUnit').value.trim() || '1 dona';
+            const shelfLife = document.getElementById('admProdShelf').value.trim() || '12 oy';
+            const desc = document.getElementById('admProdDesc').value.trim();
+            const urlInput = document.getElementById('admProdImgUrl').value.trim();
+
+            const finalImg = uploadedBase64Image || urlInput || "images/oziq-ovqat/yangi-mahsulot.jpg";
+
+            if (editId) {
+                const idx = products.findIndex(p => p.id === editId);
+                if (idx > -1) {
+                    products[idx] = {
+                        ...products[idx],
+                        name, category, subCategory, costPrice, price, oldPrice, unit, shelfLife, desc,
+                        img: finalImg
+                    };
+                    showToast("Mahsulot muvaffaqiyatli tahrirlandi!");
+                }
+            } else {
+                products.unshift({
+                    id: Date.now(),
+                    name, category, subCategory, costPrice, price, oldPrice, unit, shelfLife, desc,
+                    fastDelivery: true,
+                    inStock: true,
+                    rating: 5.0,
+                    reviews: 1,
+                    img: finalImg,
+                    fallbackImg: uploadedBase64Image || "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80"
+                });
+                showToast("Yangi mahsulot omborga va do'konga qo'shildi!");
+            }
+
+            saveAllToStorage();
+            resetAdminProductForm();
+            initAdminViewData();
+        };
+
+        const editAdminProduct = (id) => {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            document.getElementById('admEditProductId').value = p.id;
+            document.getElementById('admProdName').value = p.name;
+            document.getElementById('admProdCategory').value = p.category;
+            if (p.subCategory) document.getElementById('admProdSubcat').value = p.subCategory;
+            document.getElementById('admProdCost').value = p.costPrice;
+            document.getElementById('admProdPrice').value = p.price;
+            document.getElementById('admProdOldPrice').value = p.oldPrice;
+            document.getElementById('admProdUnit').value = p.unit || '';
+            document.getElementById('admProdShelf').value = p.shelfLife || '';
+            document.getElementById('admProdDesc').value = p.desc || '';
+            document.getElementById('admProdImgUrl').value = p.img || '';
+            document.getElementById('admImgPreview').src = p.fallbackImg || p.img;
+            document.getElementById('adminFormTitle').innerHTML = `<i class="fa-solid fa-pen-to-square text-amber-500"></i> Mahsulotni tahrirlash (#${p.id})`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        const resetAdminProductForm = () => {
+            document.getElementById('adminProductForm').reset();
+            document.getElementById('admEditProductId').value = '';
+            uploadedBase64Image = '';
+            document.getElementById('admImgPreview').src = "https://placehold.co/100x100/7000FF/ffffff?text=Rasm";
+            document.getElementById('adminFormTitle').innerHTML = `<i class="fa-solid fa-circle-plus text-bek"></i> Yangi mahsulot qo'shish (yoki tahrirlash)`;
+        };
+
+        const renderAdminProductsTable = () => {
+            const q = document.getElementById('admSearchInput').value.trim().toLowerCase();
+            const cat = document.getElementById('admFilterCat').value;
+            const tbody = document.getElementById('admProductsTableBody');
+
+            let list = [...products];
+            if (cat && cat !== 'Barchasi') list = list.filter(p => p.category === cat);
+            if (q) list = list.filter(p => p.name.toLowerCase().includes(q) || (p.subCategory && p.subCategory.toLowerCase().includes(q)));
+
+            tbody.innerHTML = list.map(p => `
+                <tr class="hover:bg-gray-50">
+                    <td class="p-3 flex items-center gap-2.5 max-w-xs">
+                        <img src="${p.img}" onerror="this.onerror=null;this.src='${p.fallbackImg}';" class="w-11 h-11 rounded-lg object-cover shrink-0 bg-gray-100">
+                        <div>
+                            <div class="font-bold text-gray-800 line-clamp-1">${p.name}</div>
+                            <div class="text-[11px] text-gray-400">${p.unit || ''} • ⏳ ${p.shelfLife || ''}</div>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="font-semibold text-gray-700">${p.category} ${p.subCategory ? ' / ' + p.subCategory : ''}</div>
+                        <div class="text-[10px] text-gray-400 font-mono">${p.img}</div>
+                    </td>
+                    <td class="p-3">
+                        <input type="number" value="${p.costPrice}" onchange="inlineUpdatePrice(${p.id}, 'costPrice', this.value)" class="w-24 px-2 py-1 rounded border border-gray-300 text-xs font-bold">
+                    </td>
+                    <td class="p-3">
+                        <input type="number" value="${p.price}" onchange="inlineUpdatePrice(${p.id}, 'price', this.value)" class="w-24 px-2 py-1 rounded border border-gray-300 text-xs font-bold text-bek">
+                    </td>
+                    <td class="p-3">
+                        <button onclick="toggleStockAdmin(${p.id})" class="px-2.5 py-1 rounded-full text-[11px] font-bold ${p.inStock ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+                            ${p.inStock ? '✓ Mavjud' : '✕ Tugagan'}
+                        </button>
+                    </td>
+                    <td class="p-3 text-right whitespace-nowrap">
+                        <button onclick="editAdminProduct(${p.id})" class="text-sky-600 hover:bg-sky-50 px-2 py-1 rounded mr-1" title="Tahrirlash"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteAdminProduct(${p.id})" class="text-rose-600 hover:bg-rose-50 px-2 py-1 rounded" title="O'chirish"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        };
+
+        const inlineUpdatePrice = (id, field, val) => {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            p[field] = Number(val) || 0;
+            saveAllToStorage();
+            showToast("Narx yangilandi!");
+        };
+
+        const toggleStockAdmin = (id) => {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            p.inStock = !p.inStock;
+            saveAllToStorage();
+            initAdminViewData();
+            showToast("Ombor holati yangilandi!");
+        };
+
+        const deleteAdminProduct = (id) => {
+            products = products.filter(p => p.id !== id);
+            saveAllToStorage();
+            initAdminViewData();
+            showToast("Mahsulot o'chirildi");
+        };
+
+        // Buyurtmalar holatini o'zgartirish (Yangi / Yo'lda / Yetkazildi / Bekor qilindi)
+        const renderAdminOrdersList = () => {
+            const container = document.getElementById('admOrdersContainer');
+            if (orders.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-gray-400 text-sm">Hozircha buyurtmalar yo'q</div>`;
+                return;
+            }
+            container.innerHTML = orders.map(o => `
+                <div class="p-4 rounded-xl border border-gray-200 bg-gray-50 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-bek">#${o.id}</span>
+                            <span class="text-xs text-gray-400">${o.date}</span>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-purple-100 text-bek">${o.paymentType}</span>
+                        </div>
+                        <div class="font-bold text-sm text-gray-800 mt-1">${o.customerName} — ${o.customerPhone}</div>
+                        <div class="text-xs text-gray-500">Manzil: ${o.address}</div>
+                        <div class="text-xs text-gray-700 mt-1 font-medium">
+                            Xarid: ${o.items.map(i => `${i.name} (${i.qty} x ${i.unit || 'dona'})`).join(', ')}
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <div class="text-base font-black text-gray-900">${formatPrice(o.total)}</div>
+                        <select onchange="updateOrderStatus(${o.id}, this.value)" class="px-3 py-1.5 rounded-xl border border-gray-300 text-xs font-bold bg-white">
+                            <option value="Yangi" ${o.status === 'Yangi' ? 'selected' : ''}>🔵 Yangi</option>
+                            <option value="Yo'lda" ${o.status === "Yo'lda" ? 'selected' : ''}>🟡 Yo'lda</option>
+                            <option value="Yetkazildi" ${o.status === 'Yetkazildi' ? 'selected' : ''}>🟢 Yetkazildi</option>
+                            <option value="Bekor qilindi" ${o.status === 'Bekor qilindi' ? 'selected' : ''}>🔴 Bekor qilindi</option>
+                        </select>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        const updateOrderStatus = (orderId, newStatus) => {
+            const ord = orders.find(o => o.id === orderId);
+            if (!ord) return;
+            ord.status = newStatus;
+            saveAllToStorage();
+            initAdminViewData();
+            showToast(`Buyurtma #${orderId} holati "${newStatus}" ga o'zgartirildi!`);
+        };
+
+        // Kategoriyalarni qo'shish/o'chirish
+        const renderAdminCategoriesList = () => {
+            const box = document.getElementById('admCategoriesList');
+            box.innerHTML = categories.map(c => `
+                <div class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-100 border border-gray-200 text-xs font-bold">
+                    <span>${c}</span>
+                    ${c !== 'Oziq-ovqat' ? `<button onclick="removeAdminCategory('${c.replace(/'/g, "\\'")}')" class="text-rose-500 hover:text-rose-700"><i class="fa-solid fa-xmark"></i></button>` : ''}
+                </div>
+            `).join('');
+        };
+
+        const addAdminCategory = (e) => {
+            e.preventDefault();
+            const val = document.getElementById('newCategoryName').value.trim();
+            if (val && !categories.includes(val)) {
+                categories.push(val);
+                saveAllToStorage();
+                document.getElementById('newCategoryName').value = '';
+                initAdminViewData();
+                showToast(`"${val}" kategoriyasi qo'shildi!`);
+            }
+        };
+
+        const removeAdminCategory = (cat) => {
+            categories = categories.filter(c => c !== cat);
+            saveAllToStorage();
+            initAdminViewData();
+            showToast("Kategoriya o'chirildi");
+        };
+
+        // 13. CHAT-BOT LOGIKASI
+        const toggleChatWidget = () => {
+            const w = document.getElementById('chatWidgetWindow');
+            w.classList.toggle('hidden');
+            w.classList.toggle('flex');
+            renderChatBoxes();
+        };
+
+        const renderChatBoxes = () => {
+            const html = chatMessages.map(m => `
+                <div class="flex flex-col ${m.sender === 'admin' ? 'items-start' : 'items-end'}">
+                    <span class="text-[10px] text-gray-400 mb-0.5">${m.sender === 'admin' ? '👨‍💼 Admin / Bot' : '👤 Xaridor'} • ${m.time}</span>
+                    <div class="max-w-[82%] px-3 py-2 rounded-2xl text-xs ${m.sender === 'admin' ? 'bg-white border border-gray-200 text-gray-800' : 'bg-bek text-white'}">
+                        ${m.text}
+                    </div>
+                </div>
+            `).join('');
+
+            const uBox = document.getElementById('userChatBox');
+            const aBox = document.getElementById('admChatMessages');
+            if (uBox) { uBox.innerHTML = html; uBox.scrollTop = uBox.scrollHeight; }
+            if (aBox) { aBox.innerHTML = html; aBox.scrollTop = aBox.scrollHeight; }
+        };
+
+        const sendCustomerChatMessage = (e) => {
+            e.preventDefault();
+            const inp = document.getElementById('userChatInput');
+            const txt = inp.value.trim();
+            if (!txt) return;
+
+            chatMessages.push({ sender: 'user', text: txt, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+            inp.value = '';
+            saveAllToStorage();
+            renderChatBoxes();
+
+            setTimeout(() => {
+                chatMessages.push({
+                    sender: 'admin',
+                    text: "Xabaringiz adminga yetkazildi! Oziq-ovqat va barcha mahsulotlar bo'yicha buyurtmangiz tez orada ko'rib chiqiladi.",
+                    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                });
+                saveAllToStorage();
+                renderChatBoxes();
+            }, 600);
+        };
+
+        const sendAdminChatReply = (e) => {
+            e.preventDefault();
+            const inp = document.getElementById('admChatInput');
+            const txt = inp.value.trim();
+            if (!txt) return;
+
+            chatMessages.push({ sender: 'admin', text: `👨‍💼 Admin: ${txt}`, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+            inp.value = '';
+            saveAllToStorage();
+            renderChatBoxes();
+            showToast("Javob xaridorga yuborildi!");
+        };
+
+        // 14. BADGELAR VA BANNER SLAYDERI
+        const updateBadges = () => {
+            const totalCart = cart.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('cartBadge').innerText = totalCart;
+            document.getElementById('favBadge').innerText = favorites.length;
+            if (currentUser) {
+                document.getElementById('userStatusText').innerText = currentUser.name.split(' ')[0];
+            }
+        };
+
+        const bannerSlides = [
+            {
+                tag: "YANGI BO'LIM: OZIQ-OVQAT ⚡",
+                title: "100 xil yangi oziq-ovqat mahsulotlari uyingizgacha!",
+                sub: "Issiq tandir non, yangi sut, sarxil meva-sabzavot va go'sht mahsulotlarini bozor narxida buyurtma qiling.",
+                img: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80"
+            },
+            {
+                tag: "ELEKTRONIKA VA GADJETLAR",
+                title: "iPhone 15 Pro va MacBook Air M2 muddatli to'lovga!",
+                sub: "Boshlang'ich to'lovsiz 12 oyga xarid qiling va 1 kunda qabul qiling.",
+                img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
+            },
+            {
+                tag: "SUPER CHEGIRMALAR",
+                title: "Kiyim, Uy-ro'zg'or va Go'zallik tovarlariga 50% gacha chegirma",
+                sub: "Naqd, Click va Payme orqali qulay to'lov imkoniyati.",
+                img: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1400&q=80"
+            }
+        ];
+        let slideIdx = 0;
+
+        const changeSlide = (dir) => {
+            slideIdx = (slideIdx + dir + bannerSlides.length) % bannerSlides.length;
+            const s = bannerSlides[slideIdx];
+            document.getElementById('bannerTag').innerText = s.tag;
+            document.getElementById('bannerTitle').innerText = s.title;
+            document.getElementById('bannerSub').innerText = s.sub;
+            document.getElementById('bannerImg').src = s.img;
+        };
+
+        setInterval(() => changeSlide(1), 5000);
+
+        // Klaviatura orqali Admin panelga tez o'tish (Ctrl + Shift + A)
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+                openSeparateAdminView();
+            }
+        });
+
+        // Sahifa yuklanganda ishga tushirish
+        window.onload = () => {
+            renderNavigationCategories();
+            renderStorefront();
+            renderChatBoxes();
+            if (window.location.hash === '#admin') {
+                openSeparateAdminView();
+            }
+        };
+    </script>
+</body>
+</html>
